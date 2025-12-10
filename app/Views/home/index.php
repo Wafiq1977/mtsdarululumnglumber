@@ -394,8 +394,8 @@
                 const targetSection = document.querySelector(targetId);
 
                 if (targetSection) {
-                    const navbarHeight = document.querySelector('.premium-main-navbar').offsetHeight;
-                    const offsetTop = targetSection.offsetTop - navbarHeight - 30;
+                    const headerHeight = document.querySelector('.premium-header').offsetHeight;
+                    const offsetTop = targetSection.offsetTop - headerHeight - 20;
 
                     window.scrollTo({
                         top: offsetTop,

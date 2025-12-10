@@ -163,6 +163,7 @@
         .school-profile-section {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 1rem;
         }
 
         .profile-tools {
@@ -211,11 +212,9 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             margin-bottom: 3rem;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            z-index: 1020;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 10;
         }
 
         .premium-main-navbar::before {
@@ -469,13 +468,13 @@
 
         @media (max-width: 768px) {
             body {
-                padding-top: 130px; /* Adjusted for mobile - header + navbar */
+                padding-top: 70px; /* Adjusted for mobile */
             }
         }
 
         @media (max-width: 576px) {
             body {
-                padding-top: 125px; /* Further adjusted for small mobile */
+                padding-top: 65px; /* Further adjusted for small mobile */
             }
 
             .hero-title {
@@ -797,7 +796,7 @@
 
         /* ===== BODY ADJUSTMENTS ===== */
         body {
-            padding-top: 140px; /* Space for fixed header + fixed navbar */
+            padding-top: 70px; /* Space for fixed header */
         }
 
         body.home-page {
