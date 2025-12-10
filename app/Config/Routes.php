@@ -1,0 +1,71 @@
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/**
+ * @var RouteCollection $routes
+ */
+$routes->get('/', 'Home::index');
+
+// Auth routes
+$routes->get('/auth/login', 'AuthController::login');
+$routes->post('/auth/authenticate', 'AuthController::authenticate');
+$routes->get('/auth/logout', 'AuthController::logout');
+
+// Admin routes with auth filter
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'AdminController::dashboard');
+    $routes->get('news', 'NewsController::adminIndex');
+    $routes->get('news/create', 'NewsController::create');
+    $routes->post('news/store', 'NewsController::store');
+    $routes->get('news/edit/(:num)', 'NewsController::edit/$1');
+    $routes->post('news/update/(:num)', 'NewsController::update/$1');
+    $routes->post('news/delete/(:num)', 'NewsController::delete/$1');
+    $routes->get('teachers', 'TeacherController::adminIndex');
+    $routes->get('teachers/create', 'TeacherController::create');
+    $routes->post('teachers/store', 'TeacherController::store');
+    $routes->get('teachers/edit/(:num)', 'TeacherController::edit/$1');
+    $routes->post('teachers/update/(:num)', 'TeacherController::update/$1');
+    $routes->post('teachers/delete/(:num)', 'TeacherController::delete/$1');
+    $routes->get('gallery', 'GalleryController::adminIndex');
+    $routes->get('gallery/create', 'GalleryController::create');
+    $routes->post('gallery/store', 'GalleryController::store');
+    $routes->get('gallery/edit/(:num)', 'GalleryController::edit/$1');
+    $routes->post('gallery/update/(:num)', 'GalleryController::update/$1');
+    $routes->post('gallery/delete/(:num)', 'GalleryController::delete/$1');
+    $routes->get('contacts', 'ContactController::adminIndex');
+    $routes->get('contacts/view/(:num)', 'ContactController::view/$1');
+    $routes->get('contacts/mark-replied/(:num)', 'ContactController::markReplied/$1');
+    $routes->post('contacts/delete/(:num)', 'ContactController::delete/$1');
+    $routes->get('announcements', 'AnnouncementController::adminIndex');
+    $routes->get('announcements/create', 'AnnouncementController::create');
+    $routes->post('announcements/store', 'AnnouncementController::store');
+    $routes->get('announcements/edit/(:num)', 'AnnouncementController::edit/$1');
+    $routes->post('announcements/update/(:num)', 'AnnouncementController::update/$1');
+    $routes->post('announcements/delete/(:num)', 'AnnouncementController::delete/$1');
+    $routes->get('events', 'EventController::adminIndex');
+    $routes->get('events/create', 'EventController::create');
+    $routes->post('events/store', 'EventController::store');
+    $routes->get('events/edit/(:num)', 'EventController::edit/$1');
+    $routes->post('events/update/(:num)', 'EventController::update/$1');
+    $routes->post('events/delete/(:num)', 'EventController::delete/$1');
+    $routes->get('users', 'AdminController::users');
+});
+
+// Public routes
+$routes->get('/news', 'NewsController::index');
+$routes->get('/news/(:segment)', 'NewsController::show/$1');
+$routes->get('/teachers', 'TeacherController::index');
+$routes->get('/teachers/(:num)', 'TeacherController::show/$1');
+$routes->get('/gallery', 'GalleryController::index');
+$routes->get('/contact', 'ContactController::index');
+$routes->post('/contact', 'ContactController::store');
+$routes->get('/profile', 'ProfileController::index');
+
+// SEO routes
+$routes->get('/sitemap.xml', 'SeoController::sitemap');
+$routes->get('/robots.txt', 'SeoController::robots');
+
+// SEO routes
+$routes->get('/sitemap.xml', 'SeoController::sitemap');
+$routes->get('/robots.txt', 'SeoController::robots');
