@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="page-hero bg-gradient-primary text-white py-5">
+<section id="identity" class="page-hero bg-gradient-primary text-white py-5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
@@ -14,6 +14,11 @@
                         <li class="breadcrumb-item active text-white" aria-current="page">Profil</li>
                     </ol>
                 </nav>
+                <div class="mt-4">
+                    <a href="/profile/identity" class="btn btn-light me-2">
+                        <i class="fas fa-id-card me-2"></i>Lihat Identitas Sekolah
+                    </a>
+                </div>
             </div>
             <div class="col-lg-4 text-center">
                 <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
@@ -247,6 +252,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="text-center mt-4">
+            <a href="/profile/facilities" class="btn btn-secondary">
+                <i class="fas fa-building me-2"></i>Lihat Semua Fasilitas
+            </a>
+        </div>
     </section>
 
     <!-- Struktur Organisasi -->
@@ -331,6 +342,12 @@
                     </a>
                 </div>
             </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/profile/history" class="btn btn-warning">
+                <i class="fas fa-history me-2"></i>Baca Sejarah Lengkap
+            </a>
         </div>
     </section>
 
@@ -422,6 +439,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="text-center mt-4">
+            <a href="/profile/structure" class="btn btn-danger">
+                <i class="fas fa-sitemap me-2"></i>Lihat Struktur Lengkap
+            </a>
+        </div>
     </section>
 
     <!-- Prestasi Sekolah -->
@@ -493,6 +516,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/profile/vision" class="btn btn-primary">
+                <i class="fas fa-eye me-2"></i>Baca Visi & Misi Lengkap
+            </a>
         </div>
     </section>
 </div>

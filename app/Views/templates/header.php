@@ -119,26 +119,68 @@
         }
 
         .premium-header .dropdown-menu {
-            background: rgba(15, 61, 62, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            margin-top: 8px;
-            padding: 0.5rem 0;
+            background: rgba(15, 61, 62, 0.98);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.1);
+            margin-top: 10px;
+            padding: 0.75rem 0;
+            min-width: 220px;
         }
 
         .premium-header .dropdown-item {
             color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
-            padding: 0.75rem 1.5rem;
-            transition: all 0.3s ease;
+            padding: 0.875rem 1.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 8px;
+            margin: 0.125rem 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-header .dropdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .premium-header .dropdown-item:hover::before {
+            left: 100%;
         }
 
         .premium-header .dropdown-item:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(15, 61, 62, 0.8));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(15, 61, 62, 0.9));
             color: #D4AF37;
-            transform: translateX(5px);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .premium-header .dropdown-item i {
+            width: 18px;
+            text-align: center;
+            margin-right: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .premium-header .dropdown-item:hover i {
+            color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .premium-header .dropdown-toggle::after {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .premium-header .dropdown-toggle[aria-expanded="true"]::after {
+            transform: rotate(180deg);
         }
 
         .premium-header .navbar-toggler {
@@ -185,6 +227,22 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
             border-color: #D4AF37;
+        }
+
+        .tool-item-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .tool-item-link:hover {
+            transform: scale(1.02);
+        }
+
+        .tool-item-link:hover .tool-item {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .tool-item i {
@@ -536,6 +594,22 @@
                 width: 100%;
                 max-width: 200px;
             }
+
+            .premium-header .dropdown-menu {
+                min-width: 200px;
+                margin-top: 5px;
+                padding: 0.5rem 0;
+            }
+
+            .premium-header .dropdown-item {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .premium-header .dropdown-item i {
+                width: 16px;
+                margin-right: 0.5rem;
+            }
         }
 
         /* ===== HERO SECTION WITH SLIDESHOW ===== */
@@ -827,8 +901,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/">Beranda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">Profil</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-info-circle me-1"></i>Profil
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="/profile"><i class="fas fa-school me-2"></i>Profil Sekolah</a></li>
+                                <li><a class="dropdown-item" href="/profile/identity"><i class="fas fa-id-card me-2"></i>Identitas Sekolah</a></li>
+                                <li><a class="dropdown-item" href="/profile/vision"><i class="fas fa-eye me-2"></i>Visi Misi</a></li>
+                                <li><a class="dropdown-item" href="/profile/history"><i class="fas fa-history me-2"></i>Sejarah Sekolah</a></li>
+                                <li><a class="dropdown-item" href="/profile/structure"><i class="fas fa-sitemap me-2"></i>Struktur Organisasi</a></li>
+                                <li><a class="dropdown-item" href="/profile/facilities"><i class="fas fa-building me-2"></i>Fasilitas</a></li>
+                                <li><a class="dropdown-item" href="/teachers"><i class="fas fa-users me-2"></i>Staf dan Pengajar</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/news">Berita</a>

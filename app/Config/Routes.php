@@ -61,6 +61,11 @@ $routes->get('/gallery', 'GalleryController::index');
 $routes->get('/contact', 'ContactController::index');
 $routes->post('/contact', 'ContactController::store');
 $routes->get('/profile', 'ProfileController::index');
+$routes->get('/profile/identity', 'ProfileController::identity');
+$routes->get('/profile/vision', 'ProfileController::vision');
+$routes->get('/profile/history', 'ProfileController::history');
+$routes->get('/profile/structure', 'ProfileController::structure');
+$routes->get('/profile/facilities', 'ProfileController::facilities');
 
 // SEO routes
 $routes->get('/sitemap.xml', 'SeoController::sitemap');

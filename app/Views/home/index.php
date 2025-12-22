@@ -59,10 +59,12 @@
                 <i class="fas fa-user-graduate"></i>
                 <span>Guru: 25+</span>
             </div>
-            <div class="tool-item">
-                <i class="fas fa-award"></i>
-                <span>Akreditasi: A</span>
-            </div>
+            <a href="/profile/identity" class="tool-item-link">
+                <div class="tool-item">
+                    <i class="fas fa-award"></i>
+                    <span>Akreditasi: A</span>
+                </div>
+            </a>
             <div class="tool-item">
                 <i class="fas fa-calendar-alt"></i>
                 <span>Didirikan: 2010</span>
@@ -75,32 +77,53 @@
 <nav class="premium-main-navbar">
     <div class="container-fluid">
         <div class="navbar-content">
-            <div class="navbar-menu">
-                <a href="/" class="nav-item">
-                    <i class="fas fa-home"></i>
-                    <span>Beranda</span>
-                </a>
-                <a href="/profile" class="nav-item">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Profil</span>
-                </a>
-                <a href="#news" class="nav-item">
-                    <i class="fas fa-newspaper"></i>
-                    <span>Berita</span>
-                </a>
-                <a href="/teachers" class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>Guru & Staff</span>
-                </a>
-                <a href="/gallery" class="nav-item">
-                    <i class="fas fa-images"></i>
-                    <span>Galeri</span>
-                </a>
-                <a href="#contact" class="nav-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Kontak</span>
-                </a>
-            </div>
+            <ul class="navbar-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link-custom">
+                        <i class="fas fa-home"></i>
+                        <span>Beranda</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="profileDropdownHome" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Profil</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdownHome">
+                        <li><a class="dropdown-item" href="/profile"><i class="fas fa-school me-2"></i>Profil Sekolah</a></li>
+                        <li><a class="dropdown-item" href="/profile/identity"><i class="fas fa-id-card me-2"></i>Identitas Sekolah</a></li>
+                        <li><a class="dropdown-item" href="/profile/vision"><i class="fas fa-eye me-2"></i>Visi Misi</a></li>
+                        <li><a class="dropdown-item" href="/profile/history"><i class="fas fa-history me-2"></i>Sejarah Sekolah</a></li>
+                        <li><a class="dropdown-item" href="/profile/structure"><i class="fas fa-sitemap me-2"></i>Struktur Organisasi</a></li>
+                        <li><a class="dropdown-item" href="/profile/facilities"><i class="fas fa-building me-2"></i>Fasilitas</a></li>
+                        <li><a class="dropdown-item" href="/teachers"><i class="fas fa-users me-2"></i>Staf dan Pengajar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#news" class="nav-link-custom">
+                        <i class="fas fa-newspaper"></i>
+                        <span>Berita</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/teachers" class="nav-link-custom">
+                        <i class="fas fa-users"></i>
+                        <span>Guru & Staff</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/gallery" class="nav-link-custom">
+                        <i class="fas fa-images"></i>
+                        <span>Galeri</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link-custom">
+                        <i class="fas fa-envelope"></i>
+                        <span>Kontak</span>
+                    </a>
+                </li>
+            </ul>
 
             <div class="navbar-actions">
                 <a href="/news" class="btn-nav-primary">
@@ -448,6 +471,39 @@
             sectionObserver.observe(section);
         });
 
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"], a[href*="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                // Check if it's an anchor link (contains #)
+                if (href.includes('#')) {
+                    e.preventDefault();
+                    const targetId = href.split('#')[1];
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        const headerOffset = 80; // Account for fixed header
+                        const elementPosition = targetElement.offsetTop;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                                hide: true
+                            });
+                        }
+                    }
+                }
+            });
+        });
+
         // Enhanced form animations
         const formInputs = document.querySelectorAll('.form-input');
         formInputs.forEach(input => {
@@ -497,6 +553,47 @@
                 }
             });
         }
+
+        // Manual dropdown toggle for home navbar
+        const profileDropdownHome = document.getElementById('profileDropdownHome');
+        const profileDropdownMenu = document.querySelector('#profileDropdownHome + .dropdown-menu') || document.querySelector('[aria-labelledby="profileDropdownHome"]');
+
+        if (profileDropdownHome && profileDropdownMenu) {
+            profileDropdownHome.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                    if (menu !== profileDropdownMenu) {
+                        menu.classList.remove('show');
+                    }
+                });
+
+                // Toggle current dropdown
+                profileDropdownMenu.classList.toggle('show');
+                this.setAttribute('aria-expanded', profileDropdownMenu.classList.contains('show'));
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!profileDropdownHome.contains(e.target) && !profileDropdownMenu.contains(e.target)) {
+                    profileDropdownMenu.classList.remove('show');
+                    profileDropdownHome.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Handle dropdown item clicks - allow navigation
+            profileDropdownMenu.addEventListener('click', function(e) {
+                // Only prevent default if clicking on non-link elements
+                if (!e.target.closest('.dropdown-item')) {
+                    e.stopPropagation();
+                }
+                // Let dropdown items handle their own navigation
+            });
+        }
+
+
 
         // Enhanced card hover effects
         const programCards = document.querySelectorAll('.program-card');
@@ -721,7 +818,7 @@ body.home-page {
     margin-bottom: 3rem;
     margin-top: 1rem;
     position: relative;
-    z-index: 10;
+    z-index: 1000;
     border-radius: 15px;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -790,13 +887,18 @@ body.home-page {
 
 .navbar-menu {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.9);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -805,6 +907,7 @@ body.home-page {
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
+    min-height: 60px;
 }
 
 .nav-item::before {
@@ -852,6 +955,138 @@ body.home-page {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+.premium-main-navbar .nav-link-custom {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem !important;
+    margin: 0 0.25rem;
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    text-decoration: none;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.premium-main-navbar .nav-link-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.premium-main-navbar .nav-link-custom:hover::before {
+    left: 100%;
+}
+
+.premium-main-navbar .nav-link-custom:hover {
+    color: #D4AF37 !important;
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.premium-main-navbar .nav-link.dropdown-toggle::after {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.premium-main-navbar .nav-link.dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+.premium-main-navbar .nav-item.dropdown {
+    position: relative;
+}
+
+.premium-main-navbar .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(15, 61, 62, 0.99) !important;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(212, 175, 55, 0.4) !important;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.2);
+    margin-top: 15px;
+    padding: 0.75rem 0;
+    min-width: 220px;
+    z-index: 1300 !important;
+    width: max-content;
+    max-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.premium-main-navbar .dropdown-menu.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0);
+}
+
+.premium-main-navbar .dropdown-item {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+    padding: 0.875rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 8px;
+    margin: 0.125rem 0.5rem;
+    position: relative;
+    overflow: hidden;
+    background: transparent !important;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+}
+
+.premium-main-navbar .dropdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+    transition: left 0.4s ease;
+}
+
+.premium-main-navbar .dropdown-item:hover::before {
+    left: 100%;
+}
+
+.premium-main-navbar .dropdown-item:hover {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(15, 61, 62, 0.9));
+    color: #D4AF37;
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.premium-main-navbar .dropdown-item i {
+    width: 18px;
+    text-align: center;
+    margin-right: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.premium-main-navbar .dropdown-item:hover i {
+    color: #FFD700;
+    transform: scale(1.1);
+}
+
+
 
 .navbar-actions {
     display: flex;
@@ -2471,9 +2706,15 @@ body.home-page {
     }
 
     .navbar-menu {
-        gap: 1rem;
+        gap: 1.5rem;
         justify-content: center;
         flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+
+    .nav-item {
+        min-height: 50px;
+        padding: 0.5rem 0.75rem;
     }
 
     .navbar-actions {
@@ -2581,6 +2822,32 @@ body.home-page {
     .btn-nav-secondary {
         padding: 0.5rem 1rem;
         font-size: 0.85rem;
+    }
+
+    .premium-main-navbar .nav-item.dropdown {
+        position: relative;
+    }
+
+    .premium-main-navbar .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 200px;
+        margin-top: 10px;
+        padding: 0.5rem 0;
+        z-index: 1300;
+        max-width: 280px;
+    }
+
+    .premium-main-navbar .dropdown-item {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .premium-main-navbar .dropdown-item i {
+        width: 16px;
+        margin-right: 0.5rem;
     }
 }
 
