@@ -56,18 +56,13 @@
         }
 
         .logo-icon {
-            font-size: 2rem;
-            color: #D4AF37;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 0.5rem;
-            border-radius: 12px;
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            height: 40px;
+            width: auto;
             transition: all 0.3s ease;
         }
 
-        .logo-icon:hover {
+        .logo-container:hover .logo-icon {
             transform: scale(1.1) rotate(5deg);
-            background: rgba(212, 175, 55, 0.2);
         }
 
         .logo-main {
@@ -813,7 +808,7 @@
                 <!-- Logo & Brand -->
                 <a class="navbar-brand" href="/">
                     <div class="logo-container">
-                        <i class="fas fa-mosque logo-icon"></i>
+                        <img src="/uploads/logo.png" alt="Logo" class="logo-icon">
                         <div class="logo-text">
                             <span class="logo-main">MTS Darul Ulum</span>
                             <span class="logo-sub">Nglumber</span>

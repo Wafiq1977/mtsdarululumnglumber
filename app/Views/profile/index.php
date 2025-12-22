@@ -261,7 +261,7 @@
             <div class="org-level text-center mb-5">
                 <div class="org-member main-leader">
                     <div class="member-avatar mb-3">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        <img src="<?= base_url('uploads/kepalasekolah.jpg') ?>"
                              alt="Kepala Sekolah" class="rounded-circle">
                     </div>
                     <h5 class="member-name">Dr. Ahmad Susanto, M.Pd.</h5>

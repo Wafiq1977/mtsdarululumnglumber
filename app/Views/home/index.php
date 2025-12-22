@@ -9,139 +9,46 @@
 <section class="hero-section">
     <!-- Logo Box in Top Left Corner -->
     <div class="hero-logo-box">
-        <div class="logo-blob">
-            <i class="fas fa-mosque logo-icon-blob"></i>
+        <a href="/" class="logo-blob">
+            <img src="/uploads/logo.png" alt="Logo" class="logo-img-blob">
             <div class="logo-text-blob">
                 <span class="logo-main-blob">MTS Darul Ulum</span>
                 <span class="logo-sub-blob">Nglumber</span>
             </div>
-        </div>
+        </a>
     </div>
 
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <!-- Carousel Indicators -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <div class="hero-slide" style="background-image: url('/uploads/fotohero.jpg');">
+
+            <div class="hero-content">
+
+                <div class="container">
+
+                    <div class="row align-items-center min-vh-100">
+
+                        <div class="col-lg-8">
+
+                        </div>
+
+                        <div class="col-lg-4 d-none d-lg-block">
+
+                            <div class="hero-visual">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-
-        <!-- Carousel Inner -->
-        <div class="carousel-inner">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-                    <div class="hero-overlay"></div>
-                    <div class="hero-content">
-                        <div class="container">
-                            <div class="row align-items-center min-vh-100">
-                                <div class="col-lg-8">
-                                    <h1 class="hero-title animate-fade-in-up">
-                                        Madrasah Tsanawiyah<br>
-                                        <span class="hero-title-accent">Darul Ulum Nglumber</span>
-                                    </h1>
-                                    <p class="hero-description animate-fade-in-up animation-delay-1">
-                                        Mencetak Generasi Berakhlak, Berprestasi, dan Berwawasan Islam
-                                    </p>
-                                    <div class="hero-actions animate-fade-in-up animation-delay-2">
-                                        <a href="/profile" class="btn btn-light btn-lg me-3">
-                                            <i class="fas fa-info-circle me-2"></i>Profil Sekolah
-                                        </a>
-                                        <a href="/contact" class="btn btn-outline-light btn-lg">
-                                            <i class="fas fa-envelope me-2"></i>Kontak Kami
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 d-none d-lg-block">
-                                    <div class="hero-visual animate-scale-in animation-delay-3">
-                                        <div class="hero-stats">
-                                            <div class="stat-item">
-                                                <div class="stat-number" data-target="500">0</div>
-                                                <div class="stat-label">Siswa</div>
-                                            </div>
-                                            <div class="stat-item">
-                                                <div class="stat-number" data-target="25">0</div>
-                                                <div class="stat-label">Guru</div>
-                                            </div>
-                                            <div class="stat-item">
-                                                <div class="stat-number" data-target="15">0</div>
-                                                <div class="stat-label">Tahun</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-                    <div class="hero-overlay"></div>
-                    <div class="hero-content">
-                        <div class="container">
-                            <div class="row align-items-center min-vh-100">
-                                <div class="col-lg-8">
-                                    <h1 class="hero-title animate-fade-in-up">
-                                        Pembelajaran<br>
-                                        <span class="hero-title-accent">Modern & Interaktif</span>
-                                    </h1>
-                                    <p class="hero-description animate-fade-in-up animation-delay-1">
-                                        Fasilitas lengkap dengan teknologi terkini untuk mendukung proses belajar mengajar
-                                    </p>
-                                    <div class="hero-actions animate-fade-in-up animation-delay-2">
-                                        <a href="/gallery" class="btn btn-light btn-lg me-3">
-                                            <i class="fas fa-images me-2"></i>Lihat Galeri
-                                        </a>
-                                        <a href="/teachers" class="btn btn-outline-light btn-lg">
-                                            <i class="fas fa-users me-2"></i>Guru & Staff
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-                    <div class="hero-overlay"></div>
-                    <div class="hero-content">
-                        <div class="container">
-                            <div class="row align-items-center min-vh-100">
-                                <div class="col-lg-8">
-                                    <h1 class="hero-title animate-fade-in-up">
-                                        Prestasi &<br>
-                                        <span class="hero-title-accent">Ekstrakurikuler</span>
-                                    </h1>
-                                    <p class="hero-description animate-fade-in-up animation-delay-1">
-                                        Berbagai kegiatan ekstrakurikuler dan prestasi siswa di berbagai bidang
-                                    </p>
-                                    <div class="hero-actions animate-fade-in-up animation-delay-2">
-                                        <a href="/news" class="btn btn-light btn-lg me-3">
-                                            <i class="fas fa-trophy me-2"></i>Prestasi Siswa
-                                        </a>
-                                        <a href="#programs" class="btn btn-outline-light btn-lg">
-                                            <i class="fas fa-star me-2"></i>Program Unggulan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </section>
 
 <!-- ===== SCHOOL PROFILE TOOL SECTION ===== -->
-<section class="school-profile-section py-4">
+<section class="school-profile-section py-2">
     <div class="container">
         <div class="profile-tools">
             <div class="tool-item">
@@ -209,28 +116,35 @@
     </div>
 </nav>
 
-<!-- About Section -->
+<!-- Sambutan Kepala Sekolah Section -->
 <section id="about" class="py-5 bg-light">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                      alt="Kampus MTS" class="img-fluid rounded shadow">
+            <div class="col-lg-5 text-center">
+                <img src="<?= base_url('uploads/kepalasekolah.jpg') ?>"
+                      alt="Foto Kepala Sekolah" class="img-kepala-sekolah shadow">
             </div>
-            <div class="col-lg-6">
-                <h2 class="mb-4 text-primary">Tentang Kami</h2>
-                <p class="lead text-muted">
-                    MTS Darul Ulum Nglumber adalah lembaga pendidikan Islam yang berkomitmen
-                    memberikan pendidikan berkualitas tinggi dengan mengintegrasikan nilai-nilai
-                    Islam dalam setiap aspek pembelajaran.
-                </p>
-                <p class="text-muted">
-                    Kami fokus pada pembentukan karakter siswa yang berakhlak mulia, berprestasi akademik,
-                    dan memiliki wawasan Islam yang luas.
-                </p>
-                <a href="/profile" class="btn btn-primary">
-                    <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
-                </a>
+            <div class="col-lg-7">
+                <h2 class="mb-4" style="color: #0F3D3E;">Sambutan Kepala Sekolah</h2>
+                <div id="sambutan-text" class="sambutan-text-container">
+                    <p class="text-sambutan lead">
+                        Assalamualaikum Wr. Wb.
+                    </p>
+                    <p class="text-sambutan">
+                        Puji syukur kehadirat Allah SWT yang telah melimpahkan rahmat dan hidayah-Nya kepada kita semua. Selamat datang di website resmi MTS Darul Ulum Nglumber. Website ini kami hadirkan sebagai media informasi dan komunikasi bagi seluruh civitas akademika, alumni, serta masyarakat luas.
+                    </p>
+                    <div class="sambutan-full-text">
+                        <p class="text-sambutan">
+                            Kami berharap, melalui website ini, Anda dapat mengenal lebih dekat profil sekolah kami, program-program unggulan, serta berbagai prestasi yang telah kami raih. MTS Darul Ulum Nglumber berkomitmen untuk mencetak generasi yang tidak hanya unggul dalam bidang akademik, tetapi juga berakhlak mulia dan berwawasan Islam yang kuat. Mari bersama-sama kita majukan pendidikan untuk masa depan generasi penerus bangsa yang lebih baik.
+                        </p>
+                        <p class="text-sambutan">
+                            Wassalamualaikum Wr. Wb.
+                        </p>
+                    </div>
+                </div>
+                <button id="btn-baca-sambutan" class="btn btn-sambutan mt-3">
+                    <i class="fas fa-chevron-down me-2"></i>Baca Selengkapnya
+                </button>
             </div>
         </div>
     </div>
@@ -569,6 +483,21 @@
             });
         }
 
+        // Sambutan Kepala Sekolah Read More
+        const btnBacaSambutan = document.getElementById('btn-baca-sambutan');
+        const sambutanText = document.getElementById('sambutan-text');
+
+        if (btnBacaSambutan && sambutanText) {
+            btnBacaSambutan.addEventListener('click', function() {
+                sambutanText.classList.toggle('expanded');
+                if (sambutanText.classList.contains('expanded')) {
+                    this.innerHTML = '<i class="fas fa-chevron-up me-2"></i>Tutup';
+                } else {
+                    this.innerHTML = '<i class="fas fa-chevron-down me-2"></i>Baca Selengkapnya';
+                }
+            });
+        }
+
         // Enhanced card hover effects
         const programCards = document.querySelectorAll('.program-card');
         programCards.forEach(card => {
@@ -642,7 +571,7 @@
 /* Logo Box in Top Left Corner */
 .hero-logo-box {
     position: absolute;
-    top: 2rem;
+    top: 4rem;
     left: 2rem;
     z-index: 10;
 }
@@ -660,6 +589,7 @@
     border: 3px solid rgba(212, 175, 55, 0.3);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: blob-float 6s ease-in-out infinite;
+    text-decoration: none;
 }
 
 .logo-blob:hover {
@@ -675,6 +605,11 @@
     padding: 0.75rem;
     border-radius: 50%;
     border: 2px solid rgba(212, 175, 55, 0.2);
+}
+
+.logo-img-blob {
+    height: 3.5rem;
+    width: auto;
 }
 
 .logo-text-blob {
@@ -699,15 +634,17 @@
 
 @keyframes blob-float {
     0%, 100% {
-        transform: translateY(0px) rotate(0deg);
+        transform: rotate(0deg);
     }
     33% {
-        transform: translateY(-10px) rotate(2deg);
+        transform: rotate(2deg);
     }
     66% {
-        transform: translateY(-5px) rotate(-1deg);
+        transform: rotate(-1deg);
     }
 }
+
+
 
 /* Hide header navbar on home page only */
 body.home-page .premium-header {
@@ -716,6 +653,60 @@ body.home-page .premium-header {
 
 body.home-page {
     padding-top: 0 !important;
+}
+
+/* Sambutan Kepala Sekolah Section */
+.img-kepala-sekolah {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid white;
+    box-shadow: 0 10px 40px rgba(15, 61, 62, 0.2);
+}
+
+.text-sambutan {
+    color: #0F3D3E; /* Green theme color */
+}
+
+.sambutan-text-container {
+    max-height: 170px; /* Initial height for the preview */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.7s ease-in-out;
+}
+
+.sambutan-text-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to top, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
+    pointer-events: none; /* Allows clicking through the gradient */
+}
+
+.sambutan-text-container.expanded {
+    max-height: 1000px; /* Large enough to show all content */
+}
+
+.sambutan-text-container.expanded::after {
+    display: none;
+}
+
+.btn-sambutan {
+    background-color: #0F3D3E;
+    border-color: #0F3D3E;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-sambutan:hover {
+    background-color: #D4AF37; /* Gold color from theme for hover */
+    border-color: #D4AF37;
+    color: #0F3D3E;
+    transform: translateY(-2px);
 }
 
 /* ===== PREMIUM MAIN NAVBAR (ABOVE ABOUT SECTION) ===== */
@@ -728,7 +719,7 @@ body.home-page {
     box-shadow: 0 12px 40px rgba(0, 77, 64, 0.3), 0 0 0 1px rgba(255, 215, 0, 0.1);
     animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     margin-bottom: 3rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     position: relative;
     z-index: 10;
     border-radius: 15px;
@@ -946,12 +937,7 @@ body.home-page {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0;
     transition: opacity 1.5s ease-in-out;
-}
-
-.hero-slide.active {
-    opacity: 1;
 }
 
 .hero-overlay-gradient {
@@ -1059,7 +1045,7 @@ body.home-page {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1rem;
@@ -1107,8 +1093,8 @@ body.home-page {
 }
 
 .hero-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.95);
     margin-bottom: 2rem;
     animation: fade-in-up 1s ease-out 0.3s both;
