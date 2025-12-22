@@ -1,38 +1,124 @@
 </main>
 
 <!-- ===== FOOTER ===== -->
-<footer class="bg-dark text-light mt-5 py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>MTS Darul Ulum Nglumber</h5>
-                <p>Madrasah Tsanawiyah yang berkomitmen memberikan pendidikan Islam terpadu berkualitas tinggi.</p>
-                <div>
-                    <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-youtube"></i></a>
+<footer class="footer-gradient text-white mt-5 py-5 position-relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="footer-pattern"></div>
+
+    <div class="container position-relative">
+        <div class="row g-4">
+            <!-- School Info -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-section">
+                    <div class="school-logo mb-3">
+                        <i class="fas fa-graduation-cap fa-2x text-warning mb-2"></i>
+                        <h5 class="fw-bold text-white mb-3">MTS Darul Ulum Nglumber</h5>
+                    </div>
+                    <p class="mb-4 opacity-75">Madrasah Tsanawiyah yang berkomitmen memberikan pendidikan Islam terpadu berkualitas tinggi untuk mencetak generasi unggul bangsa.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link whatsapp" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <h5>Link Cepat</h5>
-                <ul class="list-unstyled">
-                    <li><a href="/profile" class="text-light">Profil Sekolah</a></li>
-                    <li><a href="/news" class="text-light">Berita</a></li>
-                    <li><a href="/teachers" class="text-light">Guru & Staff</a></li>
-                    <li><a href="/gallery" class="text-light">Galeri</a></li>
-                    <li><a href="/contact" class="text-light">Kontak</a></li>
-                </ul>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <div class="footer-section">
+                    <h6 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-link me-2"></i>Link Cepat
+                    </h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="/profile" class="footer-link"><i class="fas fa-angle-right me-2"></i>Profil Sekolah</a></li>
+                        <li><a href="/news" class="footer-link"><i class="fas fa-angle-right me-2"></i>Berita</a></li>
+                        <li><a href="/teachers" class="footer-link"><i class="fas fa-angle-right me-2"></i>Guru & Staff</a></li>
+                        <li><a href="/gallery" class="footer-link"><i class="fas fa-angle-right me-2"></i>Galeri</a></li>
+                        <li><a href="/contact" class="footer-link"><i class="fas fa-angle-right me-2"></i>Kontak</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h5>Kontak</h5>
-                <p><i class="fas fa-map-marker-alt me-2"></i>Jl. Raya Nglumber, Lumajang</p>
-                <p><i class="fas fa-phone me-2"></i>(0334) 1234567</p>
-                <p><i class="fas fa-envelope me-2"></i>info@mtsdarululum.sch.id</p>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h6 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-address-book me-2"></i>Kontak Kami
+                    </h6>
+                    <ul class="list-unstyled contact-info">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt text-warning me-2"></i>
+                            <span>Jl. Raya Nglumber, Lumajang</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone text-warning me-2"></i>
+                            <span>(0334) 1234567</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope text-warning me-2"></i>
+                            <span>info@mtsdarululum.sch.id</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock text-warning me-2"></i>
+                            <span>Senin - Jumat: 07:00 - 15:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter/Stats -->
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h6 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-chart-line me-2"></i>Statistik Sekolah
+                    </h6>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number text-warning">500+</div>
+                            <div class="stat-label">Siswa</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number text-warning">25+</div>
+                            <div class="stat-label">Guru</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number text-warning">10+</div>
+                            <div class="stat-label">Tahun</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number text-warning">A</div>
+                            <div class="stat-label">Akreditasi</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="text-center">
-            <p class="mb-0">&copy; 2024 MTS Darul Ulum Nglumber. All rights reserved.</p>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom mt-5 pt-4 border-top border-warning border-opacity-25">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 opacity-75">
+                        <i class="fas fa-copyright text-warning me-1"></i>
+                        2024 MTS Darul Ulum Nglumber. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 opacity-75">
+                        <i class="fas fa-code text-warning me-1"></i>
+                        Dibuat dengan <i class="fas fa-heart text-danger mx-1"></i> untuk pendidikan
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

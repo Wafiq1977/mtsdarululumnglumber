@@ -153,19 +153,19 @@
 <!-- Programs Section -->
 <section id="programs" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-5 text-primary">Program Unggulan</h2>
+        <h2 class="text-center mb-5 text-success">Program Unggulan</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card text-center h-100 shadow-sm">
+                <div class="card text-center h-100 shadow-sm program-card">
                     <div class="card-body">
-                        <i class="fas fa-quran fa-3x text-primary mb-3"></i>
+                        <i class="fas fa-quran fa-3x text-success mb-3"></i>
                         <h5 class="card-title">Kurikulum Islam</h5>
                         <p class="card-text text-muted">Penguatan program tahfidz, BTQ, dan akhlak islami</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card text-center h-100 shadow-sm">
+                <div class="card text-center h-100 shadow-sm program-card">
                     <div class="card-body">
                         <i class="fas fa-users fa-3x text-success mb-3"></i>
                         <h5 class="card-title">Ekstrakurikuler</h5>
@@ -174,9 +174,9 @@
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card text-center h-100 shadow-sm">
+                <div class="card text-center h-100 shadow-sm program-card">
                     <div class="card-body">
-                        <i class="fas fa-laptop fa-3x text-info mb-3"></i>
+                        <i class="fas fa-laptop fa-3x text-success mb-3"></i>
                         <h5 class="card-title">Teknologi Digital</h5>
                         <p class="card-text text-muted">Pembelajaran dengan teknologi modern</p>
                     </div>
@@ -189,18 +189,18 @@
 <!-- News Section -->
 <section id="news" class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-5 text-primary">Berita Terbaru</h2>
+        <h2 class="text-center mb-5 text-success">Berita Terbaru</h2>
         <div class="row">
             <?php if (!empty($latestNews)): ?>
                 <?php foreach (array_slice($latestNews, 0, 3) as $news): ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm">
+                        <div class="card h-100 shadow-sm news-card">
                             <img src="<?= $news['image'] ? base_url('uploads/' . $news['image']) : 'https://via.placeholder.com/400x250' ?>"
-                                  class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                                 class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $news['title'] ?></h5>
+                                <h5 class="card-title text-success"><?= $news['title'] ?></h5>
                                 <p class="card-text text-muted"><?= substr(strip_tags($news['content']), 0, 100) ?>...</p>
-                                <a href="/news/<?= $news['slug'] ?>" class="btn btn-primary">
+                                <a href="/news/<?= $news['slug'] ?>" class="btn btn-success">
                                     <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
                                 </a>
                             </div>
@@ -214,7 +214,7 @@
             <?php endif; ?>
         </div>
         <div class="text-center mt-4">
-            <a href="/news" class="btn btn-outline-primary">
+            <a href="/news" class="btn btn-outline-success">
                 <i class="fas fa-list me-2"></i>Lihat Semua Berita
             </a>
         </div>
@@ -224,10 +224,10 @@
 <!-- Contact Section -->
 <section id="contact" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-5 text-primary">Hubungi Kami</h2>
+        <h2 class="text-center mb-5 text-success">Hubungi Kami</h2>
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card shadow">
+                <div class="card shadow contact-card">
                     <div class="card-body p-5">
                         <form action="/contact" method="post">
                             <?= csrf_field() ?>
@@ -250,7 +250,7 @@
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <button type="submit" class="btn btn-success btn-lg px-5">
                                     <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
                                 </button>
                             </div>
@@ -2670,6 +2670,339 @@ body.home-page {
     background: #f8f9fa;
     border-radius: 15px;
     padding: 60px 40px;
+}
+
+/* ===== PROGRAMS SECTION ENHANCEMENTS ===== */
+.program-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.program-card:hover,
+.program-card:active {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
+    border-color: #28a745;
+}
+
+.program-card .card-body {
+    transition: all 0.3s ease;
+}
+
+.program-card:hover .card-body {
+    transform: translateY(-2px);
+}
+
+.program-card i {
+    transition: all 0.3s ease;
+}
+
+.program-card:hover i {
+    transform: scale(1.1) rotate(5deg);
+    color: #28a745 !important;
+}
+
+/* ===== NEWS SECTION ENHANCEMENTS ===== */
+.news-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.news-card:hover,
+.news-card:active {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
+    border-color: #28a745;
+}
+
+.news-card .card-body {
+    transition: all 0.3s ease;
+}
+
+.news-card:hover .card-body,
+.news-card:active .card-body {
+    transform: translateY(-2px);
+}
+
+.news-card .card-title {
+    transition: all 0.3s ease;
+}
+
+.news-card:hover .card-title,
+.news-card:active .card-title {
+    color: #155724 !important;
+}
+
+.news-card .btn {
+    transition: all 0.3s ease;
+}
+
+.news-card:hover .btn,
+.news-card:active .btn {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* ===== CONTACT SECTION ENHANCEMENTS ===== */
+.contact-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.contact-card:hover,
+.contact-card:active {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
+    border-color: #28a745;
+}
+
+.contact-card .card-body {
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .card-body,
+.contact-card:active .card-body {
+    transform: translateY(-2px);
+}
+
+.contact-card .btn {
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .btn,
+.contact-card:active .btn {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* ===== FOOTER ENHANCEMENTS ===== */
+.footer-gradient {
+    background: linear-gradient(135deg, #0F3D3E 0%, #1a4a4a 50%, #0F3D3E 100%);
+    position: relative;
+    border-top: 3px solid #D4AF37;
+}
+
+.footer-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    opacity: 0.6;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+}
+
+.school-logo {
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #D4AF37;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    background: #D4AF37;
+    color: #0F3D3E;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    border-color: #D4AF37;
+}
+
+.social-link.facebook:hover { background: #1877f2; color: white; }
+.social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+.social-link.youtube:hover { background: #ff0000; color: white; }
+.social-link.whatsapp:hover { background: #25d366; color: white; }
+
+.footer-links {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-link {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 0.25rem;
+}
+
+.footer-link:hover {
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.1);
+    padding-left: 1rem;
+    transform: translateX(5px);
+}
+
+.contact-info {
+    margin: 0;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.contact-info i {
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Footer Animations */
+.footer-section {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.footer-section:nth-child(1) { animation-delay: 0.1s; }
+.footer-section:nth-child(2) { animation-delay: 0.2s; }
+.footer-section:nth-child(3) { animation-delay: 0.3s; }
+.footer-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Smooth hover effects for all footer elements */
+.footer-section h6 {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-section h6::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #D4AF37, #FFD700);
+    transition: width 0.3s ease;
+}
+
+.footer-section:hover h6::after {
+    width: 100%;
+}
+
+/* Enhanced social links with pulse effect */
+@keyframes social-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+}
+
+.social-link:hover {
+    animation: social-pulse 1s ease-in-out infinite;
+}
+
+/* Footer Responsive */
+@media (max-width: 768px) {
+    .footer-gradient {
+        padding: 3rem 0 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .stat-item {
+        padding: 0.75rem;
+    }
+
+    .footer-bottom .row {
+        text-align: center !important;
+    }
+
+    .footer-bottom .col-md-6 + .col-md-6 {
+        margin-top: 1rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .school-logo h5 {
+        font-size: 1.1rem;
+    }
+
+    .footer-section h6 {
+        font-size: 0.9rem;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
 }
 
 /* ===== ENHANCED ABOUT SECTION ===== */
