@@ -47,7 +47,7 @@
                                <div class="org-node-new org-node-staff">
                                     <i class="fas fa-chalkboard-teacher"></i>
                                     <h5>Guru & Staff</h5>
-                                    <span>25+ Pengajar Profesional</span>
+                                    <span>20+ Pengajar Profesional</span>
                                 </div>
                             </div>
                         </div>

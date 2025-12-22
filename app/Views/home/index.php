@@ -53,11 +53,11 @@
         <div class="profile-tools">
             <div class="tool-item">
                 <i class="fas fa-users"></i>
-                <span>Siswa: 500+</span>
+                <span>Siswa: 100+</span>
             </div>
             <div class="tool-item">
                 <i class="fas fa-user-graduate"></i>
-                <span>Guru: 25+</span>
+                <span>Guru: 20+</span>
             </div>
             <a href="/profile/identity" class="tool-item-link">
                 <div class="tool-item">
@@ -203,7 +203,7 @@
 <!-- News Section -->
 <section id="news" class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-5 text-success">Berita Terbaru</h2>
+        <h2 class="text-center mb-5 text-success">Berita Sekolah</h2>
         <div class="row">
             <?php if (!empty($latestNews)): ?>
                 <?php foreach (array_slice($latestNews, 0, 3) as $news): ?>
@@ -231,6 +231,42 @@
             <a href="/news" class="btn btn-outline-success">
                 <i class="fas fa-list me-2"></i>Lihat Semua Berita
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- National News Section -->
+<section id="national-news" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 text-success">Berita Nasional</h2>
+        <div class="row">
+            <?php if (!empty($nationalNews)): ?>
+                <?php foreach ($nationalNews as $news): ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm national-news-card">
+                            <img src="<?= $news['urlToImage'] ?? 'https://via.placeholder.com/400x250' ?>"
+                                 class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title text-success"><?= $news['title'] ?></h5>
+                                <p class="card-text text-muted"><?= substr($news['description'], 0, 100) ?>...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-newspaper me-1"></i>
+                                        <?= $news['source']['name'] ?? 'Sumber' ?>
+                                    </small>
+                                    <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fas fa-external-link-alt me-1"></i>Baca
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12 text-center">
+                    <p class="text-muted">Berita nasional sedang dimuat...</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -2962,43 +2998,43 @@ body.home-page {
 }
 
 /* ===== NEWS SECTION ENHANCEMENTS ===== */
-.news-card {
+.news-card, .national-news-card {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 2px solid transparent;
     cursor: pointer;
 }
 
-.news-card:hover,
-.news-card:active {
+.news-card:hover, .national-news-card:hover,
+.news-card:active, .national-news-card:active {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
     border-color: #28a745;
 }
 
-.news-card .card-body {
+.news-card .card-body, .national-news-card .card-body {
     transition: all 0.3s ease;
 }
 
-.news-card:hover .card-body,
-.news-card:active .card-body {
+.news-card:hover .card-body, .national-news-card:hover .card-body,
+.news-card:active .card-body, .national-news-card:active .card-body {
     transform: translateY(-2px);
 }
 
-.news-card .card-title {
+.news-card .card-title, .national-news-card .card-title {
     transition: all 0.3s ease;
 }
 
-.news-card:hover .card-title,
-.news-card:active .card-title {
+.news-card:hover .card-title, .national-news-card:hover .card-title,
+.news-card:active .card-title, .national-news-card:active .card-title {
     color: #155724 !important;
 }
 
-.news-card .btn {
+.news-card .btn, .national-news-card .btn {
     transition: all 0.3s ease;
 }
 
-.news-card:hover .btn,
-.news-card:active .btn {
+.news-card:hover .btn, .national-news-card:hover .btn,
+.news-card:active .btn, .national-news-card:active .btn {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }

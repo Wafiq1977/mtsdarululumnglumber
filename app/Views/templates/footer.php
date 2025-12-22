@@ -83,11 +83,11 @@
                     </h6>
                     <div class="stats-grid">
                         <div class="stat-item">
-                            <div class="stat-number text-warning">500+</div>
+                            <div class="stat-number text-warning">100+</div>
                             <div class="stat-label">Siswa</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number text-warning">25+</div>
+                            <div class="stat-number text-warning">20+</div>
                             <div class="stat-label">Guru</div>
                         </div>
                         <div class="stat-item">
