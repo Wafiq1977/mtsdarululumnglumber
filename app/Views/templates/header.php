@@ -1098,6 +1098,346 @@
         font-size: 1.25rem;
     }
 }
+
+/* Profile Page Styles */
+.page-hero-profile {
+    background: linear-gradient(135deg, #0F3D3E, #1E5656);
+    border-bottom: 5px solid #D4AF37;
+    position: relative;
+    overflow: hidden;
+}
+.page-hero-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(212,175,55,0.1) 0%, transparent 40%);
+    animation: pulse-background 10s infinite;
+}
+@keyframes pulse-background {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+.profile-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.profile-card-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #0F3D3E, #1E5656);
+    color: white;
+}
+.profile-card-header i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #D4AF37;
+}
+.profile-card-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.profile-card-body {
+    padding: 2rem;
+}
+.vision-card .blockquote {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #0F3D3E;
+    border-left: 4px solid #D4AF37;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.mission-list-new {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mission-item-new {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s;
+}
+.mission-item-new:last-child {
+    border-bottom: none;
+}
+.mission-item-new:hover {
+    background-color: #f8f9fa;
+}
+.mission-icon-new {
+    background: #D4AF37;
+    color: #0F3D3E;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+.mission-text-new h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #0F3D3E;
+}
+.mission-text-new p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.profile-sidebar {
+    position: sticky;
+    top: 100px;
+}
+.sidebar-widget {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    margin-bottom: 2rem;
+    border: 1px solid #e9ecef;
+}
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0F3D3E;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #D4AF37;
+}
+.profile-nav .list-group-item {
+    border: none;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #495057;
+    border-radius: 8px !important;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+.profile-nav .list-group-item i {
+    margin-right: 1rem;
+    width: 20px;
+    text-align: center;
+    color: #D4AF37;
+}
+.profile-nav .list-group-item:hover {
+    background-color: #f8f9fa;
+    color: #0F3D3E;
+    transform: translateX(5px);
+}
+.profile-nav .list-group-item.active {
+    background: #0F3D3E;
+    color: white;
+    box-shadow: 0 5px 15px rgba(15,61,62,0.2);
+}
+.profile-nav .list-group-item.active i {
+    color: white;
+}
+.goals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.goals-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: #495057;
+}
+.goals-list i {
+    color: #D4AF37;
+    margin-right: 0.75rem;
+}
+
+.identity-item-new {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #D4AF37;
+    margin-bottom: 1rem;
+}
+.identity-label-new {
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+.identity-value-new {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #343a40;
+}
+.identity-value-new a {
+    color: #0F3D3E;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.identity-value-new a:hover {
+    color: #D4AF37;
+}
+
+.timeline-new {
+    position: relative;
+    padding-left: 3rem;
+    border-left: 2px solid #e9ecef;
+}
+.timeline-item-new {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+.timeline-item-new:last-child {
+    margin-bottom: 0;
+}
+.timeline-marker-new {
+    position: absolute;
+    left: -0.7rem;
+    top: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #fff;
+    border: 3px solid #D4AF37;
+    border-radius: 50%;
+}
+.timeline-content-new {
+    padding-left: 1rem;
+}
+.timeline-year-new {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.timeline-content-new h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0F3D3E;
+    margin-bottom: 0.5rem;
+}
+.timeline-content-new p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.org-chart-new {
+    text-align: center;
+}
+.org-level-new {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.org-level-new::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 0;
+}
+.org-level-new:first-child::before, .org-level-new:last-child::before {
+    display: none;
+}
+.org-node-new {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #e9ecef;
+    min-width: 200px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+.org-node-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.org-node-leader {
+    border-top: 4px solid #D4AF37;
+}
+.org-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid #D4AF37;
+}
+.org-node-new h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0F3D3E;
+    margin-bottom: 0.25rem;
+}
+.org-node-new span {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.org-node-staff i {
+    font-size: 2rem;
+    color: #D4AF37;
+    margin-bottom: 0.5rem;
+}
+
+.facility-item-new {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+.facility-item-new:hover {
+    transform: translateY(-5px);
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.facility-icon-new {
+    font-size: 2rem;
+    color: #D4AF37;
+}
+.facility-text-new h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0F3D3E;
+    margin-bottom: 0.25rem;
+}
+.facility-text-new p {
+    color: #6c757d;
+    margin: 0;
+    font-size: 0.9rem;
+}
     </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     </head>
