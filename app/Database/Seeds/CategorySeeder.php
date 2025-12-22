@@ -28,6 +28,30 @@ class CategorySeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
+                'name' => 'Prestasi Siswa',
+                'type' => 'news',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Prestasi Guru',
+                'type' => 'news',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Kegiatan Siswa',
+                'type' => 'news',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Kegiatan Guru',
+                'type' => 'news',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
                 'name' => 'Kegiatan Sekolah',
                 'type' => 'gallery',
                 'created_at' => date('Y-m-d H:i:s'),

@@ -1541,8 +1541,18 @@
                                 <li><a class="dropdown-item" href="/teachers"><i class="fas fa-users me-2"></i>Staf dan Pengajar</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/news">Berita</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-newspaper me-1"></i>Berita
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="newsDropdown">
+                                <li><a class="dropdown-item" href="/news"><i class="fas fa-list me-2"></i>Semua Berita</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/news?category=Prestasi+Siswa"><i class="fas fa-trophy me-2"></i>Prestasi Siswa</a></li>
+                                <li><a class="dropdown-item" href="/news?category=Prestasi+Guru"><i class="fas fa-award me-2"></i>Prestasi Guru</a></li>
+                                <li><a class="dropdown-item" href="/news?category=Kegiatan+Siswa"><i class="fas fa-users me-2"></i>Kegiatan Siswa</a></li>
+                                <li><a class="dropdown-item" href="/news?category=Kegiatan+Guru"><i class="fas fa-chalkboard-teacher me-2"></i>Kegiatan Guru</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/teachers">Guru & Staff</a>

@@ -24,27 +24,46 @@ class NewsController extends BaseController
         $page = $this->request->getGet('page') ?? 1;
         $perPage = 6;
 
-        $query = $this->newsModel->getPublished();
+        $query = $this->newsModel->where('status', 'published');
 
         // Apply search filter
         if ($search) {
-            $query = $this->newsModel->like('title', $search)->orLike('content', $search);
+            $query = $query->like('title', $search)->orLike('content', $search);
         }
 
         // Apply category filter
         if ($category) {
-            $query = $this->newsModel->where('category_id', $category);
+            // Check if category is numeric (ID) or string (name)
+            if (is_numeric($category)) {
+                $query = $query->where('category_id', $category);
+            } else {
+                // Find category by name
+                $cat = $this->categoryModel->where('name', $category)->where('type', 'news')->first();
+                if ($cat) {
+                    $query = $query->where('category_id', $cat['id']);
+                }
+            }
         }
 
         $total = $query->countAllResults(false);
         $news = $query->orderBy('created_at', 'DESC')->paginate($perPage, 'news', $page);
+
+        $selectedCategoryName = '';
+        if ($category) {
+            if (is_numeric($category)) {
+                $cat = $this->categoryModel->find($category);
+                $selectedCategoryName = $cat ? $cat['name'] : '';
+            } else {
+                $selectedCategoryName = $category;
+            }
+        }
 
         $data = [
             'title' => 'Berita Sekolah',
             'news' => $news,
             'pager' => $this->newsModel->pager,
             'search' => $search,
-            'selectedCategory' => $category,
+            'selectedCategory' => $selectedCategoryName,
             'categories' => $this->categoryModel->where('type', 'news')->findAll(),
         ];
 

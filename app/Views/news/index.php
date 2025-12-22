@@ -14,7 +14,7 @@
             <select name="category" class="form-select" onchange="this.form.submit()">
                 <option value="">Semua Kategori</option>
                 <?php foreach ($categories as $category): ?>
-                    <option value="<?= $category['id'] ?>" <?= $selectedCategory == $category['id'] ? 'selected' : '' ?>>
+                    <option value="<?= $category['name'] ?>" <?= $selectedCategory == $category['name'] ? 'selected' : '' ?>>
                         <?= $category['name'] ?>
                     </option>
                 <?php endforeach; ?>
