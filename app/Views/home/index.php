@@ -209,7 +209,7 @@
                 <?php foreach (array_slice($latestNews, 0, 3) as $news): ?>
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm news-card">
-                            <img src="<?= $news['image'] ? base_url('uploads/' . $news['image']) : 'https://via.placeholder.com/400x250' ?>"
+                            <img src="<?= $news['image'] ? base_url('uploads/' . $news['image']) : 'https://picsum.photos/400/250?random=' . md5($news['title']) ?>"
                                  class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title text-success"><?= $news['title'] ?></h5>
@@ -255,7 +255,7 @@
                                         <?= $news['source']['name'] ?? 'Sumber' ?>
                                     </small>
                                     <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-success btn-sm">
-                                        <i class="fas fa-external-link-alt me-1"></i>Baca
+                                        <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
                                     </a>
                                 </div>
                             </div>
