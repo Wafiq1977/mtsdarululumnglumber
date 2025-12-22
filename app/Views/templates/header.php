@@ -1438,10 +1438,69 @@
     margin: 0;
     font-size: 0.9rem;
 }
+
+/* Splash Screen Styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+}
+
+#splash-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.splash-logo {
+    width: 100px;
+    height: auto;
+    animation: bounce 2s infinite;
+}
+
+.splash-title {
+    margin-top: 1rem;
+    color: #0F3D3E;
+    font-weight: 600;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
     </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="/uploads/logo.png" alt="Logo" class="splash-logo">
+            <h3 class="splash-title">MTS Darul Ulum Nglumber</h3>
+        </div>
+    </div>
     <!-- ===== PREMIUM HEADER ===== -->
     <header class="premium-header">
         <nav class="navbar navbar-expand-lg navbar-dark">

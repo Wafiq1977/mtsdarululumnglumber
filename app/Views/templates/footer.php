@@ -125,5 +125,46 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Splash Screen JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const splashScreen = document.getElementById('splash-screen');
+    
+    // Hide splash screen on initial load
+    if (splashScreen) {
+        setTimeout(() => {
+            splashScreen.classList.add('hidden');
+        }, 100); // Small delay to ensure it renders first
+    }
+
+    // Show splash screen when navigating away
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = link.getAttribute('href');
+            const target = link.getAttribute('target');
+
+            // Check if it's a navigational link that opens in the same tab
+            if (href && !href.startsWith('#') && !href.startsWith('javascript:') && target !== '_blank' && !link.hasAttribute('data-bs-toggle')) {
+                if (splashScreen) {
+                   splashScreen.classList.remove('hidden');
+                }
+            }
+        });
+    });
+
+    // Handle back/forward button navigation
+    window.addEventListener('pageshow', function(event) {
+        // The pageshow event is fired every time the page is displayed, including for back/forward navigation.
+        // event.persisted is true if the page is being loaded from the cache (bfcache).
+        const splashScreen = document.getElementById('splash-screen');
+        if (splashScreen) {
+            // Always hide splash screen on page show to handle bfcache
+            splashScreen.classList.add('hidden');
+        }
+    });
+});
+</script>
 </body>
 </html>
