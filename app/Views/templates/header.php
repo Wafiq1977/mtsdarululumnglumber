@@ -39,7 +39,7 @@
 
         .premium-header .navbar-brand {
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: white !important;
             transition: all 0.3s ease;
         }
@@ -56,7 +56,7 @@
         }
 
         .logo-icon {
-            height: 40px;
+            height: 32px;
             width: auto;
             transition: all 0.3s ease;
         }
@@ -67,7 +67,7 @@
 
         .logo-main {
             color: white;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             line-height: 1.2;
             display: block;
@@ -75,7 +75,7 @@
 
         .logo-sub {
             color: #D4AF37;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -88,7 +88,7 @@
         .premium-header .nav-link {
             color: rgba(255, 255, 255, 0.9) !important;
             font-weight: 500;
-            padding: 0.75rem 1.5rem !important;
+            padding: 0.5rem 1rem !important;
             margin: 0 0.25rem;
             border-radius: 25px;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -521,13 +521,13 @@
 
         @media (max-width: 768px) {
             body {
-                padding-top: 70px; /* Adjusted for mobile */
+                padding-top: 60px; /* Adjusted for mobile */
             }
         }
 
         @media (max-width: 576px) {
             body {
-                padding-top: 65px; /* Further adjusted for small mobile */
+                padding-top: 55px; /* Further adjusted for small mobile */
             }
 
             .hero-title {
@@ -865,12 +865,239 @@
 
         /* ===== BODY ADJUSTMENTS ===== */
         body {
-            padding-top: 70px; /* Space for fixed header */
+            padding-top: 60px; /* Space for fixed header */
         }
 
         body.home-page {
             padding-bottom: 0; /* Remove bottom padding for home page */
         }
+
+/* ===== FOOTER ENHANCEMENTS ===== */
+.footer-gradient {
+    background: linear-gradient(135deg, #0F3D3E 0%, #1a4a4a 50%, #0F3D3E 100%);
+    position: relative;
+    border-top: 3px solid #D4AF37;
+}
+
+.footer-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    opacity: 0.6;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+}
+
+.school-logo {
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #D4AF37;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    background: #D4AF37;
+    color: #0F3D3E;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    border-color: #D4AF37;
+}
+
+.social-link.facebook:hover { background: #1877f2; color: white; }
+.social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+.social-link.youtube:hover { background: #ff0000; color: white; }
+.social-link.whatsapp:hover { background: #25d366; color: white; }
+
+.footer-links {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-link {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 0.25rem;
+}
+
+.footer-link:hover {
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.1);
+    padding-left: 1rem;
+    transform: translateX(5px);
+}
+
+.contact-info {
+    margin: 0;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.contact-info i {
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Footer Animations */
+.footer-section {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.footer-section:nth-child(1) { animation-delay: 0.1s; }
+.footer-section:nth-child(2) { animation-delay: 0.2s; }
+.footer-section:nth-child(3) { animation-delay: 0.3s; }
+.footer-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Smooth hover effects for all footer elements */
+.footer-section h6 {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-section h6::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #D4AF37, #FFD700);
+    transition: width 0.3s ease;
+}
+
+.footer-section:hover h6::after {
+    width: 100%;
+}
+
+/* Enhanced social links with pulse effect */
+@keyframes social-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+}
+
+.social-link:hover {
+    animation: social-pulse 1s ease-in-out infinite;
+}
+
+/* Footer Responsive */
+@media (max-width: 768px) {
+    .footer-gradient {
+        padding: 3rem 0 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .stat-item {
+        padding: 0.75rem;
+    }
+
+    .footer-bottom .row {
+        text-align: center !important;
+    }
+
+    .footer-bottom .col-md-6 + .col-md-6 {
+        margin-top: 1rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .school-logo h5 {
+        font-size: 1.1rem;
+    }
+
+    .footer-section h6 {
+        font-size: 0.9rem;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
+}
     </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     </head>

@@ -29,7 +29,7 @@
 
 <!-- Main Content -->
 <section class="py-5">
-    <div class="container">
+    <div class="container animate-fade-in">
         <div class="row">
             <!-- Vision & Mission Content -->
             <div class="col-lg-8 mb-4">
@@ -256,5 +256,19 @@
 
 .list-group-item.active i {
     color: white !important;
+}
+
+/* Smooth Animations */
+.animate-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>

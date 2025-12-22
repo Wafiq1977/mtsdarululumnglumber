@@ -84,20 +84,11 @@
                         <span>Beranda</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="profileDropdownHome" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item">
+                    <a href="/profile" class="nav-link-custom">
                         <i class="fas fa-info-circle"></i>
                         <span>Profil</span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="profileDropdownHome">
-                        <li><a class="dropdown-item" href="/profile"><i class="fas fa-school me-2"></i>Profil Sekolah</a></li>
-                        <li><a class="dropdown-item" href="/profile/identity"><i class="fas fa-id-card me-2"></i>Identitas Sekolah</a></li>
-                        <li><a class="dropdown-item" href="/profile/vision"><i class="fas fa-eye me-2"></i>Visi Misi</a></li>
-                        <li><a class="dropdown-item" href="/profile/history"><i class="fas fa-history me-2"></i>Sejarah Sekolah</a></li>
-                        <li><a class="dropdown-item" href="/profile/structure"><i class="fas fa-sitemap me-2"></i>Struktur Organisasi</a></li>
-                        <li><a class="dropdown-item" href="/profile/facilities"><i class="fas fa-building me-2"></i>Fasilitas</a></li>
-                        <li><a class="dropdown-item" href="/teachers"><i class="fas fa-users me-2"></i>Staf dan Pengajar</a></li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#news" class="nav-link-custom">
@@ -108,7 +99,7 @@
                 <li class="nav-item">
                     <a href="/teachers" class="nav-link-custom">
                         <i class="fas fa-users"></i>
-                        <span>Guru & Staff</span>
+                        <span>Guru</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -815,7 +806,7 @@ body.home-page {
     border-bottom: 3px solid rgba(255, 215, 0, 0.4);
     box-shadow: 0 12px 40px rgba(0, 77, 64, 0.3), 0 0 0 1px rgba(255, 215, 0, 0.1);
     animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     margin-top: 1rem;
     position: relative;
     z-index: 1000;
@@ -850,7 +841,7 @@ body.home-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -881,7 +872,7 @@ body.home-page {
 .brand-text {
     color: white;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -902,12 +893,12 @@ body.home-page {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.9);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 15px;
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
-    min-height: 60px;
+    min-height: 50px;
 }
 
 .nav-item::before {
@@ -950,7 +941,7 @@ body.home-page {
 }
 
 .nav-item span {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1098,11 +1089,11 @@ body.home-page {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
+    padding: 0.5rem 1.25rem;
     border-radius: 25px;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 2px solid transparent;
     position: relative;
@@ -2702,7 +2693,7 @@ body.home-page {
     .navbar-content {
         flex-direction: column;
         gap: 1rem;
-        padding: 1rem;
+        padding: 0.75rem;
     }
 
     .navbar-menu {
@@ -2713,8 +2704,8 @@ body.home-page {
     }
 
     .nav-item {
-        min-height: 50px;
-        padding: 0.5rem 0.75rem;
+        min-height: 45px;
+        padding: 0.4rem 0.6rem;
     }
 
     .navbar-actions {
@@ -2810,7 +2801,7 @@ body.home-page {
     }
 
     .navbar-content {
-        padding: 0.75rem;
+        padding: 0.5rem;
     }
 
     .navbar-actions {
@@ -2820,8 +2811,8 @@ body.home-page {
 
     .btn-nav-primary,
     .btn-nav-secondary {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
     }
 
     .premium-main-navbar .nav-item.dropdown {
@@ -3017,259 +3008,6 @@ body.home-page {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 2px solid transparent;
     cursor: pointer;
-}
-
-.contact-card:hover,
-.contact-card:active {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
-    border-color: #28a745;
-}
-
-.contact-card .card-body {
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover .card-body,
-.contact-card:active .card-body {
-    transform: translateY(-2px);
-}
-
-.contact-card .btn {
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover .btn,
-.contact-card:active .btn {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-}
-
-/* ===== FOOTER ENHANCEMENTS ===== */
-.footer-gradient {
-    background: linear-gradient(135deg, #0F3D3E 0%, #1a4a4a 50%, #0F3D3E 100%);
-    position: relative;
-    border-top: 3px solid #D4AF37;
-}
-
-.footer-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-    opacity: 0.6;
-}
-
-.footer-section {
-    margin-bottom: 2rem;
-}
-
-.school-logo {
-    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-    padding-bottom: 1rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #D4AF37;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-}
-
-.social-link:hover {
-    transform: translateY(-3px) scale(1.1);
-    background: #D4AF37;
-    color: #0F3D3E;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-    border-color: #D4AF37;
-}
-
-.social-link.facebook:hover { background: #1877f2; color: white; }
-.social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
-.social-link.youtube:hover { background: #ff0000; color: white; }
-.social-link.whatsapp:hover { background: #25d366; color: white; }
-
-.footer-links {
-    margin: 0;
-    padding: 0;
-}
-
-.footer-link {
-    display: block;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    padding: 0.5rem 0;
-    transition: all 0.3s ease;
-    border-radius: 5px;
-    margin-bottom: 0.25rem;
-}
-
-.footer-link:hover {
-    color: #D4AF37;
-    background: rgba(212, 175, 55, 0.1);
-    padding-left: 1rem;
-    transform: translateX(5px);
-}
-
-.contact-info {
-    margin: 0;
-    padding: 0;
-}
-
-.contact-info li {
-    display: flex;
-    align-items: flex-start;
-    line-height: 1.6;
-}
-
-.contact-info i {
-    margin-top: 0.25rem;
-    flex-shrink: 0;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-}
-
-.stat-number {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
-
-.footer-bottom {
-    animation: fade-in-up 0.8s ease-out forwards;
-}
-
-/* Footer Animations */
-.footer-section {
-    animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.footer-section:nth-child(1) { animation-delay: 0.1s; }
-.footer-section:nth-child(2) { animation-delay: 0.2s; }
-.footer-section:nth-child(3) { animation-delay: 0.3s; }
-.footer-section:nth-child(4) { animation-delay: 0.4s; }
-
-/* Smooth hover effects for all footer elements */
-.footer-section h6 {
-    position: relative;
-    overflow: hidden;
-}
-
-.footer-section h6::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #D4AF37, #FFD700);
-    transition: width 0.3s ease;
-}
-
-.footer-section:hover h6::after {
-    width: 100%;
-}
-
-/* Enhanced social links with pulse effect */
-@keyframes social-pulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-    }
-}
-
-.social-link:hover {
-    animation: social-pulse 1s ease-in-out infinite;
-}
-
-/* Footer Responsive */
-@media (max-width: 768px) {
-    .footer-gradient {
-        padding: 3rem 0 2rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-
-    .stat-item {
-        padding: 0.75rem;
-    }
-
-    .footer-bottom .row {
-        text-align: center !important;
-    }
-
-    .footer-bottom .col-md-6 + .col-md-6 {
-        margin-top: 1rem;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .footer-section {
-        margin-bottom: 1.5rem;
-    }
-
-    .school-logo h5 {
-        font-size: 1.1rem;
-    }
-
-    .footer-section h6 {
-        font-size: 0.9rem;
-    }
-
-    .stat-number {
-        font-size: 1.25rem;
-    }
 }
 
 /* ===== ENHANCED ABOUT SECTION ===== */

@@ -29,7 +29,7 @@
 </section>
 
 <!-- Main Content -->
-<div class="container py-5">
+<div class="container py-5 animate-fade-in">
     <!-- Visi & Misi Section -->
     <section class="mb-5">
         <div class="row g-4">
@@ -677,6 +677,20 @@
 
 .achievement-icon {
     opacity: 0.8;
+}
+
+/* Smooth Animations */
+.animate-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
