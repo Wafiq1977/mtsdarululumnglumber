@@ -18,23 +18,25 @@
         </a>
     </div>
 
-        <div class="hero-slide" style="background-image: url('/uploads/fotohero.jpg');">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="/uploads/WhatsApp Video 2025-12-23 at 21.57.01.mp4" type="video/mp4">
+            <!-- Fallback image -->
+            <img src="/uploads/fotohero.jpg" alt="Hero Background" class="hero-fallback">
+        </video>
 
-            <div class="hero-content">
+        <div class="hero-content">
 
-                <div class="container">
+            <div class="container">
 
-                    <div class="row align-items-center min-vh-100">
+                <div class="row align-items-center min-vh-100">
 
-                        <div class="col-lg-8">
+                    <div class="col-lg-8">
 
-                        </div>
+                    </div>
 
-                        <div class="col-lg-4 d-none d-lg-block">
+                    <div class="col-lg-4 d-none d-lg-block">
 
-                            <div class="hero-visual">
-
-                            </div>
+                        <div class="hero-visual">
 
                         </div>
 
@@ -690,6 +692,26 @@
     position: relative;
     min-height: 100vh;
     overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 /* Logo Box in Top Left Corner */
@@ -2662,6 +2684,18 @@ body.home-page {
     .hero-section {
         min-height: auto;
         padding: 100px 0 50px;
+    }
+
+    .hero-video {
+        position: relative;
+        height: 60vh;
+        object-fit: cover;
+    }
+
+    .hero-fallback {
+        position: relative;
+        height: 60vh;
+        object-fit: cover;
     }
 
     .hero-logo-box {
