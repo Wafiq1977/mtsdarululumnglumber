@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <div class="identity-item-new">
                                     <div class="identity-label-new">NPSN</div>
-                                    <div class="identity-value-new"><?= esc($identity['npsn'] ?? '20512345') ?></div>
+                                    <div class="identity-value-new">20582621</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -46,19 +46,19 @@
                             <div class="col-12">
                                 <div class="identity-item-new">
                                     <div class="identity-label-new">Alamat</div>
-                                    <div class="identity-value-new"><?= nl2br(esc($identity['alamat'] ?? 'Jl. Raya Nglumber, Desa Nglumber, Kec. Nglumber, Kab. Lumajang, Jawa Timur 67392')) ?></div>
+                                    <div class="identity-value-new">Jl. Raya Kepohbaru, Desa Nglumber, Kecamatan Kepohbaru, Bojonegoro, Jawa Timur</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="identity-item-new">
                                     <div class="identity-label-new">Telepon</div>
-                                    <div class="identity-value-new"><a href="tel:<?= esc(str_replace(['(', ')', ' ', '-'], '', $identity['telepon'] ?? '(0334) 1234567')) ?>"><?= esc($identity['telepon'] ?? '(0334) 1234567') ?></a></div>
+                                    <div class="identity-value-new"><a href="tel:+6295258932028">+62 952 5893 2028</a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="identity-item-new">
                                     <div class="identity-label-new">Email</div>
-                                    <div class="identity-value-new"><a href="mailto:<?= esc($identity['email'] ?? 'info@mtsdarululum.sch.id') ?>"><?= esc($identity['email'] ?? 'info@mtsdarululum.sch.id') ?></a></div>
+                                    <div class="identity-value-new"><a href="mailto:mtsdunglumber@gmail.com">mtsdunglumber@gmail.com</a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -70,7 +70,13 @@
                             <div class="col-md-6">
                                 <div class="identity-item-new">
                                     <div class="identity-label-new">Lembaga Pengelola</div>
-                                    <div class="identity-value-new"><?= esc($identity['lembaga_pengelola'] ?? 'LPM MAARIF NAHDLATUL ULAMA') ?></div>
+                                    <div class="identity-value-new">LP Ma'arif Nahdlatul Ulama'</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="identity-item-new">
+                                    <div class="identity-label-new">Status Sekolah</div>
+                                    <div class="identity-value-new">SWASTA</div>
                                 </div>
                             </div>
                         </div>
@@ -96,8 +102,8 @@
                      <div class="sidebar-widget">
                         <h5 class="sidebar-title">Hubungi Kami</h5>
                         <ul class="goals-list">
-                            <li><i class="fas fa-phone"></i> <?= esc($identity['telepon'] ?? '(0334) 1234567') ?></li>
-                            <li><i class="fas fa-envelope"></i> <?= esc($identity['email'] ?? 'info@mtsdarululum.sch.id') ?></li>
+                            <li><i class="fas fa-phone"></i> +62 952 5893 2028</li>
+                            <li><i class="fas fa-envelope"></i> mtsdunglumber@gmail.com</li>
                         </ul>
                     </div>
                 </div>

@@ -1345,20 +1345,24 @@
 
 .org-chart-new {
     text-align: center;
+    overflow-x: auto;
+    padding: 1rem;
 }
 .org-level-new {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin-bottom: 2rem;
     position: relative;
+    min-width: max-content;
 }
 .org-level-new::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 10%;
-    right: 10%;
+    left: 5%;
+    right: 5%;
     height: 2px;
     background: #e9ecef;
     z-index: 0;
@@ -1368,14 +1372,16 @@
 }
 .org-node-new {
     background: #fff;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     border: 1px solid #e9ecef;
-    min-width: 200px;
+    min-width: 160px;
+    max-width: 200px;
     position: relative;
     z-index: 1;
     transition: all 0.3s ease;
+    text-align: center;
 }
 .org-node-new:hover {
     transform: translateY(-5px);
@@ -1385,25 +1391,27 @@
     border-top: 4px solid #D4AF37;
 }
 .org-avatar {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
-    border: 4px solid #D4AF37;
+    margin-bottom: 0.75rem;
+    border: 3px solid #D4AF37;
 }
 .org-node-new h5 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #0F3D3E;
     margin-bottom: 0.25rem;
+    line-height: 1.2;
 }
 .org-node-new span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #6c757d;
+    line-height: 1.2;
 }
 .org-node-staff i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #D4AF37;
     margin-bottom: 0.5rem;
 }

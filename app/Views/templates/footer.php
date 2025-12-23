@@ -61,11 +61,11 @@
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-phone text-warning me-2"></i>
-                            <span>(0334) 1234567</span>
+                            <span>+62 952 5893 2028</span>
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-envelope text-warning me-2"></i>
-                            <span>info@mtsdarululum.sch.id</span>
+                            <span>mtsdunglumber@gmail.com</span>
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-clock text-warning me-2"></i>

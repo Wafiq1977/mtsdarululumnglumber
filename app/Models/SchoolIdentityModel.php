@@ -18,6 +18,7 @@ class SchoolIdentityModel extends Model
         'email',
         'tahun_berdiri',
         'lembaga_pengelola',
+        'status_sekolah',
         'deskripsi_lembaga',
         'prinsip_utama',
         'tujuan_pendidikan',
@@ -46,17 +47,18 @@ class SchoolIdentityModel extends Model
     {
         return [
             'nama_sekolah' => 'MTS Darul Ulum Nglumber',
-            'npsn' => '20512345',
+            'npsn' => '20582621',
             'jenjang' => 'Madrasah Tsanawiyah (MTs)',
             'status_akreditasi' => 'Terakreditasi A',
-            'alamat' => 'Jl. Raya Nglumber, Desa Nglumber, Kecamatan Nglumber, Kabupaten Lumajang, Jawa Timur 67392',
-            'telepon' => '(0334) 1234567',
-            'email' => 'info@mtsdarululum.sch.id',
+            'alamat' => 'Jl. Raya Kepohbaru, Desa Nglumber, Kecamatan Kepohbaru, Bojonegoro, Jawa Timur',
+            'telepon' => '+62 952 5893 2028',
+            'email' => 'mtsdunglumber@gmail.com',
             'tahun_berdiri' => '2010',
-            'lembaga_pengelola' => 'LPM MAARIF NAHDLATUL ULAMA',
+            'lembaga_pengelola' => 'LP Ma\'arif Nahdlatul Ulama\'',
+            'status_sekolah' => 'SWASTA',
             'deskripsi_lembaga' => 'Lembaga Pengembangan dan Pemberdayaan Madrasah Maarif Nahdlatul Ulama',
             'prinsip_utama' => 'Ahlussunnah wal Jama\'ah (Aswaja) sebagai landasan pendidikan Islam moderat dan toleran.',
-            'tujuan_pendidikan' => 'Mencetak generasi yang berilmu, berakhlak, dan berkontribusi bagi umat dan bangsa.'
+            'tujuan_pendidikan' => 'Mencetak generasi yang beriman, bertaqwa, berilmu pengetahuan dan teknologi, berakhlak mulia, cerdas, terampil, mandiri, berwawasan global, berpijak pada budaya bangsa.'
         ];
     }
 }

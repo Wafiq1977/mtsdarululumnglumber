@@ -22,32 +22,98 @@
                             <?= esc($profile['struktur_organisasi'] ?? 'Struktur organisasi kami dirancang untuk memastikan pengelolaan yang efektif dan pelayanan pendidikan yang optimal. Setiap bagian memiliki peran penting dalam mencapai visi dan misi madrasah.') ?>
                         </p>
                         <div class="org-chart-new">
+                            <!-- Level 1: Kepala Madrasah -->
                             <div class="org-level-new">
                                 <div class="org-node-new org-node-leader">
-                                    <img src="<?= base_url('uploads/kepalasekolah.jpg') ?>" alt="Kepala Sekolah" class="org-avatar">
-                                    <h5>Drs. Ahmad Fauzi, M.Pd.I</h5>
-                                    <span>Kepala Madrasah</span>
+                                    <i class="fas fa-user-tie"></i>
+                                    <h5>Kepala Madrasah</h5>
+                                    <span>Pimpinan Tertinggi</span>
                                 </div>
                             </div>
+
+                            <!-- Level 2: Wakil Kepala -->
                             <div class="org-level-new">
                                 <div class="org-node-new">
+                                    <i class="fas fa-graduation-cap"></i>
                                     <h5>Wakil Kepala</h5>
                                     <span>Bidang Kurikulum</span>
                                 </div>
                                 <div class="org-node-new">
+                                    <i class="fas fa-users"></i>
                                     <h5>Wakil Kepala</h5>
                                     <span>Bidang Kesiswaan</span>
                                 </div>
-                                 <div class="org-node-new">
+                                <div class="org-node-new">
+                                    <i class="fas fa-cogs"></i>
+                                    <h5>Wakil Kepala</h5>
+                                    <span>Bidang Sarana & Prasarana</span>
+                                </div>
+                            </div>
+
+                            <!-- Level 3: Koordinator & Kepala Program -->
+                            <div class="org-level-new">
+                                <div class="org-node-new">
+                                    <i class="fas fa-book"></i>
                                     <h5>Koordinator</h5>
                                     <span>Bidang Akademik</span>
                                 </div>
+                                <div class="org-node-new">
+                                    <i class="fas fa-mosque"></i>
+                                    <h5>Koordinator</h5>
+                                    <span>Bidang Keagamaan</span>
+                                </div>
+                                <div class="org-node-new">
+                                    <i class="fas fa-palette"></i>
+                                    <h5>Koordinator</h5>
+                                    <span>Ekstrakurikuler</span>
+                                </div>
+                                <div class="org-node-new">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <h5>Kepala</h5>
+                                    <span>TU & Kepegawaian</span>
+                                </div>
                             </div>
+
+                            <!-- Level 4: Guru Mata Pelajaran -->
                             <div class="org-level-new">
-                               <div class="org-node-new org-node-staff">
+                                <div class="org-node-new org-node-staff">
                                     <i class="fas fa-chalkboard-teacher"></i>
-                                    <h5>Guru & Staff</h5>
-                                    <span>20+ Pengajar Profesional</span>
+                                    <h5>Guru</h5>
+                                    <span>Mata Pelajaran Umum</span>
+                                </div>
+                                <div class="org-node-new org-node-staff">
+                                    <i class="fas fa-quran"></i>
+                                    <h5>Guru</h5>
+                                    <span>Mata Pelajaran Agama</span>
+                                </div>
+                                <div class="org-node-new org-node-staff">
+                                    <i class="fas fa-language"></i>
+                                    <h5>Guru</h5>
+                                    <span>Bahasa Asing</span>
+                                </div>
+                            </div>
+
+                            <!-- Level 5: Staff & Tenaga Kependidikan -->
+                            <div class="org-level-new">
+                                <div class="org-node-new org-node-staff">
+                                    <i class="fas fa-user-friends"></i>
+                                    <h5>Staff</h5>
+                                    <span>Administrasi</span>
+                                </div>
+                                <div class="org-node-new org-node-staff">
+                                    <i class="fas fa-tools"></i>
+                                    <h5>Staff</h5>
+                                    <span>Sarana & Prasarana</span>
+                                </div>
+                                <div class="org-node-new org-node-staff">
+                                    <i class="fas fa-book-reader"></i>
+                                    <h5>Pustakawan</h5>
+                                    <span>Perpustakaan</span>
+                                </div>
+                                <div class="org-node-new org-node-staff">
+                                    <i class="fas fa-laptop"></i>
+                                    <h5>Operator</h5>
+                                    <span>Lab. Komputer</span>
                                 </div>
                             </div>
                         </div>
@@ -73,8 +139,8 @@
                      <div class="sidebar-widget">
                         <h5 class="sidebar-title">Hubungi Kami</h5>
                         <ul class="goals-list">
-                            <li><i class="fas fa-phone"></i> (0334) 1234567</li>
-                            <li><i class="fas fa-envelope"></i> info@mtsdarululum.sch.id</li>
+                            <li><i class="fas fa-phone"></i> +62 952 5893 2028</li>
+                            <li><i class="fas fa-envelope"></i> mtsdunglumber@gmail.com</li>
                         </ul>
                     </div>
                 </div>
