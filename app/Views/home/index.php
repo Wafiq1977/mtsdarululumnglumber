@@ -273,6 +273,42 @@
     </div>
 </section>
 
+<!-- KEMENAG News Section -->
+<section id="kemenag-news" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 text-success">Berita Kementerian Agama RI</h2>
+        <div class="row">
+            <?php if (!empty($kemenagNews)): ?>
+                <?php foreach ($kemenagNews as $news): ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm kemenag-news-card">
+                            <img src="<?= $news['urlToImage'] ?? 'https://via.placeholder.com/400x250' ?>"
+                                 class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title text-success"><?= $news['title'] ?></h5>
+                                <p class="card-text text-muted"><?= substr($news['description'], 0, 100) ?>...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-mosque me-1"></i>
+                                        <?= $news['source']['name'] ?? 'Kemenag.go.id' ?>
+                                    </small>
+                                    <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
+                                        <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12 text-center">
+                    <p class="text-muted">Berita Kementerian Agama sedang dimuat...</p>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
 <!-- Contact Section -->
 <section id="contact" class="py-5">
     <div class="container">
@@ -3032,43 +3068,43 @@ body.home-page {
 }
 
 /* ===== NEWS SECTION ENHANCEMENTS ===== */
-.news-card, .national-news-card {
+.news-card, .national-news-card, .kemenag-news-card {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 2px solid transparent;
     cursor: pointer;
 }
 
-.news-card:hover, .national-news-card:hover,
-.news-card:active, .national-news-card:active {
+.news-card:hover, .national-news-card:hover, .kemenag-news-card:hover,
+.news-card:active, .national-news-card:active, .kemenag-news-card:active {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
     border-color: #28a745;
 }
 
-.news-card .card-body, .national-news-card .card-body {
+.news-card .card-body, .national-news-card .card-body, .kemenag-news-card .card-body {
     transition: all 0.3s ease;
 }
 
-.news-card:hover .card-body, .national-news-card:hover .card-body,
-.news-card:active .card-body, .national-news-card:active .card-body {
+.news-card:hover .card-body, .national-news-card:hover .card-body, .kemenag-news-card:hover .card-body,
+.news-card:active .card-body, .national-news-card:active .card-body, .kemenag-news-card:active .card-body {
     transform: translateY(-2px);
 }
 
-.news-card .card-title, .national-news-card .card-title {
+.news-card .card-title, .national-news-card .card-title, .kemenag-news-card .card-title {
     transition: all 0.3s ease;
 }
 
-.news-card:hover .card-title, .national-news-card:hover .card-title,
-.news-card:active .card-title, .national-news-card:active .card-title {
+.news-card:hover .card-title, .national-news-card:hover .card-title, .kemenag-news-card:hover .card-title,
+.news-card:active .card-title, .national-news-card:active .card-title, .kemenag-news-card:active .card-title {
     color: #155724 !important;
 }
 
-.news-card .btn, .national-news-card .btn {
+.news-card .btn, .national-news-card .btn, .kemenag-news-card .btn {
     transition: all 0.3s ease;
 }
 
-.news-card:hover .btn, .national-news-card:hover .btn,
-.news-card:active .btn, .national-news-card:active .btn {
+.news-card:hover .btn, .national-news-card:hover .btn, .kemenag-news-card:hover .btn,
+.news-card:active .btn, .national-news-card:active .btn, .kemenag-news-card:active .btn {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
