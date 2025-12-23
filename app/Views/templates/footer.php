@@ -57,7 +57,7 @@
                     <ul class="list-unstyled contact-info">
                         <li class="mb-2">
                             <i class="fas fa-map-marker-alt text-warning me-2"></i>
-                            <span>Jl. Raya Nglumber, Lumajang</span>
+                            <span>Jalan Raya Kepohbaru, Desa Nglumber, Kecamatan Kepohbaru, Bojonegoro, Jawa Timur</span>
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-phone text-warning me-2"></i>

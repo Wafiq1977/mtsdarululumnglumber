@@ -156,7 +156,7 @@
                         </p>
                     </div>
                 </div>
-                <button id="btn-baca-sambutan" class="btn btn-sambutan mt-3">
+                <button id="btn-baca-sambutan" class="btn mt-3" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                     <i class="fas fa-chevron-down me-2"></i>Baca Selengkapnya
                 </button>
             </div>
@@ -172,7 +172,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card text-center h-100 shadow-sm program-card">
                     <div class="card-body">
-                        <i class="fas fa-quran fa-3x text-success mb-3"></i>
+                        <i class="fas fa-quran fa-3x mb-3" style="color: #FFD700;"></i>
                         <h5 class="card-title">Kurikulum Islam</h5>
                         <p class="card-text text-muted">Penguatan program tahfidz, BTQ, dan akhlak islami</p>
                     </div>
@@ -181,7 +181,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card text-center h-100 shadow-sm program-card">
                     <div class="card-body">
-                        <i class="fas fa-users fa-3x text-success mb-3"></i>
+                        <i class="fas fa-users fa-3x mb-3" style="color: #FFD700;"></i>
                         <h5 class="card-title">Ekstrakurikuler</h5>
                         <p class="card-text text-muted">Berbagai kegiatan sesuai minat siswa</p>
                     </div>
@@ -190,7 +190,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card text-center h-100 shadow-sm program-card">
                     <div class="card-body">
-                        <i class="fas fa-laptop fa-3x text-success mb-3"></i>
+                        <i class="fas fa-laptop fa-3x mb-3" style="color: #FFD700;"></i>
                         <h5 class="card-title">Teknologi Digital</h5>
                         <p class="card-text text-muted">Pembelajaran dengan teknologi modern</p>
                     </div>
@@ -214,7 +214,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-success"><?= $news['title'] ?></h5>
                                 <p class="card-text text-muted"><?= substr(strip_tags($news['content']), 0, 100) ?>...</p>
-                                <a href="/news/<?= $news['slug'] ?>" class="btn btn-success">
+                                <a href="/news/<?= $news['slug'] ?>" class="btn" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                                     <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
                                 </a>
                             </div>
@@ -228,7 +228,7 @@
             <?php endif; ?>
         </div>
         <div class="text-center mt-4">
-            <a href="/news" class="btn btn-outline-success">
+            <a href="/news" class="btn" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                 <i class="fas fa-list me-2"></i>Lihat Semua Berita
             </a>
         </div>
@@ -254,7 +254,7 @@
                                         <i class="fas fa-newspaper me-1"></i>
                                         <?= $news['source']['name'] ?? 'Sumber' ?>
                                     </small>
-                                    <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-success btn-sm">
+                                    <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                                         <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
                                     </a>
                                 </div>
@@ -300,7 +300,7 @@
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success btn-lg px-5">
+                                <button type="submit" class="btn btn-lg px-5" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                                     <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
                                 </button>
                             </div>

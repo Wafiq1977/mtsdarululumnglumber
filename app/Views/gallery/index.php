@@ -1,28 +1,3 @@
-<!-- Hero Section -->
-<section class="page-hero bg-gradient-primary text-white py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-3">Galeri Sekolah</h1>
-                <p class="lead fs-5 mb-4">
-                    Koleksi foto kegiatan, fasilitas, dan momen berharga di Sekolah Kami.
-                    Saksikan berbagai aktivitas dan pencapaian siswa dalam galeri ini.
-                </p>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-transparent p-0 m-0">
-                        <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Beranda</a></li>
-                        <li class="breadcrumb-item active text-white" aria-current="page">Galeri</li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="col-lg-4 text-center">
-                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                     alt="Galeri Sekolah" class="img-fluid rounded-3 shadow-lg">
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Main Content -->
 <div class="container py-5">
     <!-- Search & Filter -->
@@ -39,7 +14,7 @@
                             <input type="text" class="form-control me-2" id="search" name="search"
                                    placeholder="Cari berdasarkan judul atau deskripsi..."
                                    value="<?= esc($searchQuery ?? '') ?>">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
@@ -149,7 +124,7 @@
                                 }
                             }
                             ?>
-                            <span class="badge bg-primary mt-2">
+                            <span class="badge mt-2" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E;">
                                 <i class="fas fa-tag me-1"></i><?= $categoryName ?>
                             </span>
                         </div>
@@ -173,7 +148,7 @@
             <p class="text-muted mb-4">
                 <?php if ($selectedCategory || $searchQuery): ?>
                     Tidak ada galeri yang sesuai dengan filter yang dipilih.
-                    <br><a href="/gallery" class="text-primary">Tampilkan semua galeri</a>
+                    <br><a href="/gallery" style="color: #FFD700; text-decoration: none; font-weight: bold;">Tampilkan semua galeri</a>
                 <?php else: ?>
                     Galeri foto akan segera ditambahkan oleh administrator.
                 <?php endif; ?>
@@ -182,18 +157,18 @@
             <?php if ($selectedCategory || $searchQuery): ?>
                 <div class="active-filters mb-3">
                     <?php if ($selectedCategory): ?>
-                        <span class="badge bg-primary me-2">
+                        <span class="badge me-2" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E;">
                             Kategori: <?= $categoryName ?? 'Pilih' ?>
-                            <a href="?<?= $searchQuery ? 'search=' . urlencode($searchQuery) : '' ?>" class="text-white ms-1">
+                            <a href="?<?= $searchQuery ? 'search=' . urlencode($searchQuery) : '' ?>" style="color: #0F3D3E; text-decoration: none;" class="ms-1">
                                 <i class="fas fa-times"></i>
                             </a>
                         </span>
                     <?php endif; ?>
 
                     <?php if ($searchQuery): ?>
-                        <span class="badge bg-secondary">
+                        <span class="badge" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E;">
                             Pencarian: "<?= esc($searchQuery) ?>"
-                            <a href="?<?= $selectedCategory ? 'category=' . $selectedCategory : '' ?>" class="text-white ms-1">
+                            <a href="?<?= $selectedCategory ? 'category=' . $selectedCategory : '' ?>" style="color: #0F3D3E; text-decoration: none;" class="ms-1">
                                 <i class="fas fa-times"></i>
                             </a>
                         </span>

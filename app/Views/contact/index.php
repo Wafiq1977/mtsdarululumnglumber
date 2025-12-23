@@ -1,9 +1,11 @@
-<div class="container py-5">
+<div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-12">
             <div class="text-center mb-5">
-                <h1 class="display-5 fw-bold">Hubungi Kami</h1>
-                <p class="lead text-muted">Kami siap membantu Anda. Kirim pesan dan kami akan segera merespons.</p>
+                <h1 class="display-5 fw-bold text-success">
+                    <i class="fas fa-envelope me-2" style="color: #D4AF37;"></i>Hubungi Kami
+                </h1>
+                <p class="lead" style="color: #0F3D3E;">Kami siap membantu Anda. Kirim pesan dan kami akan segera merespons.</p>
             </div>
 
             <?php if (session()->getFlashdata('success')): ?>
@@ -32,8 +34,8 @@
                 <div class="col-lg-8">
                     <div class="card shadow-sm">
                         <div class="card-body p-4">
-                            <h3 class="card-title mb-4">
-                                <i class="fas fa-envelope me-2 text-primary"></i>Kirim Pesan
+                            <h3 class="card-title mb-4" style="color: #0F3D3E;">
+                                <i class="fas fa-envelope me-2" style="color: #D4AF37;"></i>Kirim Pesan
                             </h3>
 
                             <form action="/contact" method="post">
@@ -65,7 +67,7 @@
                                               placeholder="Tuliskan pesan Anda di sini..." required><?= old('message') ?></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-lg">
+                                <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                                     <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
                                 </button>
                             </form>
@@ -78,53 +80,49 @@
                     <div class="contact-info">
                         <div class="info-item mb-4">
                             <div class="info-icon mb-3">
-                                <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                                <i class="fas fa-map-marker-alt fa-2x" style="color: #D4AF37;"></i>
                             </div>
-                            <h5>Alamat</h5>
-                            <p class="text-muted">Jl. Pendidikan No. 123<br>Kota Maju, Indonesia 12345</p>
+                            <h5 style="color: #0F3D3E;">Alamat</h5>
+                            <p style="color: #495057;">Jalan Raya Kepohbaru, Desa Nglumber,<br>Kecamatan Kepohbaru, Bojonegoro, Jawa Timur</p>
                         </div>
 
                         <div class="info-item mb-4">
                             <div class="info-icon mb-3">
-                                <i class="fas fa-phone fa-2x text-success"></i>
+                                <i class="fas fa-phone fa-2x" style="color: #D4AF37;"></i>
                             </div>
-                            <h5>Telepon</h5>
-                            <p class="text-muted">(021) 1234-5678<br>(021) 8765-4321</p>
+                            <h5 style="color: #0F3D3E;">Telepon</h5>
+                            <p style="color: #495057;">+62 852 5893 2028</p>
                         </div>
 
                         <div class="info-item mb-4">
                             <div class="info-icon mb-3">
-                                <i class="fas fa-envelope fa-2x text-warning"></i>
+                                <i class="fas fa-envelope fa-2x" style="color: #D4AF37;"></i>
                             </div>
-                            <h5>Email</h5>
-                            <p class="text-muted">info@sekolahkami.sch.id<br>admin@sekolahkami.sch.id</p>
+                            <h5 style="color: #0F3D3E;">Email</h5>
+                            <p style="color: #495057;">mtsdunglumber@gmail.com</p>
                         </div>
 
                         <div class="info-item">
                             <div class="info-icon mb-3">
-                                <i class="fas fa-clock fa-2x text-info"></i>
+                                <i class="fas fa-clock fa-2x" style="color: #D4AF37;"></i>
                             </div>
-                            <h5>Jam Operasional</h5>
-                            <p class="text-muted mb-1"><strong>Senin - Jumat:</strong> 07:00 - 16:00</p>
-                            <p class="text-muted"><strong>Sabtu:</strong> 08:00 - 12:00</p>
+                            <h5 style="color: #0F3D3E;">Jam Operasional</h5>
+                            <p style="color: #495057; margin-bottom: 0.25rem;"><strong>Senin - Jumat:</strong> 07:00 - 15:00</p>
                         </div>
                     </div>
 
                     <!-- Social Media -->
                     <div class="mt-4">
-                        <h5>Ikuti Kami</h5>
-                        <div class="social-links">
-                            <a href="#" class="btn btn-outline-primary btn-sm me-2 mb-2">
-                                <i class="fab fa-facebook-f me-1"></i>Facebook
+                        <h5 style="color: #0F3D3E;">Ikuti Kami</h5>
+                        <div class="social-links d-flex flex-column gap-2">
+                            <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none; text-align: left;">
+                                <i class="fab fa-facebook-f me-2"></i>lpm-NU Darul Ulum Kepohbaru
                             </a>
-                            <a href="#" class="btn btn-outline-info btn-sm me-2 mb-2">
-                                <i class="fab fa-twitter me-1"></i>Twitter
+                            <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none; text-align: left;">
+                                <i class="fab fa-instagram me-2"></i>lpmnudarululum.kepohbaru
                             </a>
-                            <a href="#" class="btn btn-outline-danger btn-sm me-2 mb-2">
-                                <i class="fab fa-instagram me-1"></i>Instagram
-                            </a>
-                            <a href="#" class="btn btn-outline-danger btn-sm mb-2">
-                                <i class="fab fa-youtube me-1"></i>YouTube
+                            <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none; text-align: left;">
+                                <i class="fab fa-youtube me-2"></i>Darul Ulum Kepohbaru
                             </a>
                         </div>
                     </div>
@@ -137,24 +135,55 @@
 <style>
 .contact-info .info-item {
     padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(15, 61, 62, 0.05), rgba(26, 74, 74, 0.05));
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .contact-info .info-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.4);
 }
 
 .social-links .btn {
-    border-radius: 20px;
+    border-radius: 25px;
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.social-links .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.card {
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-control {
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
 }
 
 @media (max-width: 768px) {
     .contact-info .info-item {
         margin-bottom: 20px;
+    }
+
+    .row.g-5 > div {
+        margin-bottom: 2rem;
     }
 }
 </style>
