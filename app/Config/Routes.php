@@ -20,7 +20,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('news/store', 'NewsController::store');
     $routes->get('news/edit/(:num)', 'NewsController::edit/$1');
     $routes->post('news/update/(:num)', 'NewsController::update/$1');
-    $routes->post('news/delete/(:num)', 'NewsController::delete/$1');
+    $routes->delete('news/delete/(:num)', 'NewsController::delete/$1');
     $routes->get('teachers', 'TeacherController::adminIndex');
     $routes->get('teachers/create', 'TeacherController::create');
     $routes->post('teachers/store', 'TeacherController::store');
@@ -32,17 +32,17 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('gallery/store', 'GalleryController::store');
     $routes->get('gallery/edit/(:num)', 'GalleryController::edit/$1');
     $routes->post('gallery/update/(:num)', 'GalleryController::update/$1');
-    $routes->post('gallery/delete/(:num)', 'GalleryController::delete/$1');
+    $routes->delete('gallery/delete/(:num)', 'GalleryController::delete/$1');
     $routes->get('contacts', 'ContactController::adminIndex');
     $routes->get('contacts/view/(:num)', 'ContactController::view/$1');
     $routes->get('contacts/mark-replied/(:num)', 'ContactController::markReplied/$1');
-    $routes->post('contacts/delete/(:num)', 'ContactController::delete/$1');
+    $routes->delete('contacts/delete/(:num)', 'ContactController::delete/$1');
     $routes->get('announcements', 'AnnouncementController::adminIndex');
     $routes->get('announcements/create', 'AnnouncementController::create');
     $routes->post('announcements/store', 'AnnouncementController::store');
     $routes->get('announcements/edit/(:num)', 'AnnouncementController::edit/$1');
     $routes->post('announcements/update/(:num)', 'AnnouncementController::update/$1');
-    $routes->post('announcements/delete/(:num)', 'AnnouncementController::delete/$1');
+    $routes->delete('announcements/delete/(:num)', 'AnnouncementController::delete/$1');
     $routes->get('events', 'EventController::adminIndex');
     $routes->get('events/create', 'EventController::create');
     $routes->post('events/store', 'EventController::store');
@@ -50,7 +50,14 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('events/update/(:num)', 'EventController::update/$1');
     $routes->post('events/delete/(:num)', 'EventController::delete/$1');
     $routes->get('users', 'AdminController::users');
+    $routes->get('categories', 'CategoryController::adminIndex');
+    $routes->get('categories/create', 'CategoryController::create');
+    $routes->post('categories/store', 'CategoryController::store');
+    $routes->get('categories/edit/(:num)', 'CategoryController::edit/$1');
+    $routes->post('categories/update/(:num)', 'CategoryController::update/$1');
+    $routes->post('categories/delete/(:num)', 'CategoryController::delete/$1');
 });
+
 
 // Public routes
 $routes->get('/news', 'NewsController::index');

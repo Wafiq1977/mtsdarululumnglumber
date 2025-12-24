@@ -36,6 +36,14 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="role" class="form-label">Role *</label>
+                        <select class="form-control" id="role" name="role" required>
+                            <option value="guru" <?= old('role') == 'guru' ? 'selected' : '' ?>>Guru</option>
+                            <option value="staf" <?= old('role') == 'staf' ? 'selected' : '' ?>>Staf</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="subject" class="form-label">Mata Pelajaran</label>
                         <input type="text" class="form-control" id="subject" name="subject" value="<?= old('subject') ?>">
                     </div>

@@ -8,6 +8,6 @@ class TeacherModel extends Model
 {
     protected $table = 'teachers';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'nip', 'position', 'subject', 'education', 'experience', 'contact', 'photo'];
+    protected $allowedFields = ['name', 'nip', 'position', 'subject', 'education', 'experience', 'contact', 'photo', 'role'];
     protected $useTimestamps = true;
 }

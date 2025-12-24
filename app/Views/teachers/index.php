@@ -22,6 +22,12 @@
                         <?php endif; ?>
 
                         <h5 class="card-title" style="color: #0F3D3E;"><?= $teacher['name'] ?></h5>
+                        <div class="mb-2">
+                            <span class="badge bg-<?= $teacher['role'] == 'guru' ? 'primary' : 'success' ?> fs-6">
+                                <i class="fas fa-<?= $teacher['role'] == 'guru' ? 'chalkboard-teacher' : 'user-tie' ?> me-1"></i>
+                                <?= ucfirst($teacher['role']) ?>
+                            </span>
+                        </div>
                         <p class="card-text" style="color: #495057;">
                             <strong>Jabatan:</strong> <?= $teacher['position'] ?><br>
                             <?php if ($teacher['subject']): ?>

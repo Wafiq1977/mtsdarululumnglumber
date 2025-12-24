@@ -1573,27 +1573,6 @@
                         </li>
                     </ul>
     
-                    <!-- Admin Login -->
-                    <?php if (session()->get('user')): ?>
-                        <div class="navbar-nav">
-                            <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
-                                    <i class="fas fa-user-shield me-2"></i>Admin
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="/admin/dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="/auth/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    <?php else: ?>
-                        <div class="navbar-nav">
-                            <a class="nav-link" href="/auth/login">
-                                <i class="fas fa-sign-in-alt me-2"></i>Login Admin
-                            </a>
-                        </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </nav>

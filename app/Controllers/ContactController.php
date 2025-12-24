@@ -13,6 +13,21 @@ class ContactController extends BaseController
         $this->contactModel = new ContactModel();
     }
 
+    // Helper method for admin templates
+    protected function renderWithAdminTemplate(string $view, array $data = []): string
+    {
+        // Check if user is logged in
+        if (!session()->get('user')) {
+            redirect()->to('/auth/login')->send();
+            exit;
+        }
+
+        echo view('admin/templates/header', $data);
+        echo view($view, $data);
+        echo view('admin/templates/footer', $data);
+        return '';
+    }
+
     public function index(): string
     {
         $data = [
@@ -76,7 +91,7 @@ class ContactController extends BaseController
             ],
         ];
 
-        return $this->renderWithTemplate('admin/contacts/index', $data);
+        return $this->renderWithAdminTemplate('admin/contacts/index', $data);
     }
 
     // Admin: Tandai sebagai sudah dibalas

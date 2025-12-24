@@ -7,7 +7,7 @@ use App\Models\NewsModel;
 use App\Models\TeacherModel;
 use App\Models\ContactModel;
 
-class AdminController extends BaseController
+class AdminController extends AdminBaseController
 {
     public function dashboard()
     {

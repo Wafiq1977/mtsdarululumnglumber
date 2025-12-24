@@ -15,9 +15,8 @@
 
 <div class="card">
     <div class="card-body">
-        <form action="/admin/teachers/update/<?= $teacher['id'] ?>" method="post" enctype="multipart/form-data">
-            <?= csrf_field() ?>
-            <input type="hidden" name="_method" value="PUT">
+        <form id="editForm" enctype="multipart/form-data">
+            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
 
             <div class="row">
                 <div class="col-md-6">
@@ -34,6 +33,14 @@
                     <div class="mb-3">
                         <label for="position" class="form-label">Jabatan *</label>
                         <input type="text" class="form-control" id="position" name="position" value="<?= old('position', $teacher['position']) ?>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role *</label>
+                        <select class="form-control" id="role" name="role" required>
+                            <option value="guru" <?= old('role', $teacher['role']) == 'guru' ? 'selected' : '' ?>>Guru</option>
+                            <option value="staf" <?= old('role', $teacher['role']) == 'staf' ? 'selected' : '' ?>>Staf</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
@@ -72,9 +79,35 @@
             </div>
 
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-primary" onclick="updateTeacher(<?= $teacher['id'] ?>)">Update</button>
                 <a href="/admin/teachers" class="btn btn-secondary">Batal</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+function updateTeacher(id) {
+    const form = document.getElementById('editForm');
+    const formData = new FormData(form);
+
+
+    fetch(`/admin/teachers/update/${id}`, {
+        method: 'POST', // Browser only supports GET/POST, use method spoofing
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Data berhasil diupdate!');
+            window.location.href = '/admin/teachers';
+        } else {
+            alert('Error: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan saat mengupdate data: ' + error.message);
+    });
+}
+</script>

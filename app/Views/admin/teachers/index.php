@@ -18,6 +18,7 @@
                         <th>Foto</th>
                         <th>Nama</th>
                         <th>NIP</th>
+                        <th>Role</th>
                         <th>Jabatan</th>
                         <th>Mata Pelajaran</th>
                         <th>Aksi</th>
@@ -37,14 +38,18 @@
                             </td>
                             <td><?= $teacher['name'] ?></td>
                             <td><?= $teacher['nip'] ?></td>
+                            <td>
+                                <span class="badge bg-<?= ($teacher['role'] ?? 'guru') == 'guru' ? 'primary' : 'success' ?>">
+                                    <?= ucfirst($teacher['role'] ?? 'guru') ?>
+                                </span>
+                            </td>
                             <td><?= $teacher['position'] ?></td>
                             <td><?= $teacher['subject'] ?: '-' ?></td>
                             <td>
                                 <a href="/teachers/<?= $teacher['id'] ?>" class="btn btn-sm btn-info" target="_blank">Lihat</a>
                                 <a href="/admin/teachers/edit/<?= $teacher['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="/admin/teachers/delete/<?= $teacher['id'] ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data guru ini?')">
-                                    <?= csrf_field() ?>
-                                    <input type="hidden" name="_method" value="DELETE">
+                                <form action="/admin/teachers/delete/<?= $teacher['id'] ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data guru ini?');">
+                                    <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                                     <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                 </form>
                             </td>

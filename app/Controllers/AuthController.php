@@ -17,17 +17,26 @@ class AuthController extends BaseController
 
     public function authenticate()
     {
-        $rules = [
-            'username' => 'required',
-            'password' => 'required',
-        ];
+        // Check for URL parameters first (manual login)
+        $username = $this->request->getGet('username') ?: $this->request->getPost('username');
+        $password = $this->request->getGet('password') ?: $this->request->getPost('password');
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        if (empty($username) || empty($password)) {
+            $rules = [
+                'username' => 'required',
+                'password' => 'required',
+            ];
+
+            if (!$this->validate($rules)) {
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+
+            $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
         }
 
         $userModel = new UserModel();
-        $user = $userModel->authenticate($this->request->getPost('username'), $this->request->getPost('password'));
+        $user = $userModel->authenticate($username, $password);
 
         if ($user) {
             session()->set('user', $user);

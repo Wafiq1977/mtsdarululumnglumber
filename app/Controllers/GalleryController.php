@@ -16,6 +16,21 @@ class GalleryController extends BaseController
         $this->categoryModel = new CategoryModel();
     }
 
+    // Helper method for admin templates
+    protected function renderWithAdminTemplate(string $view, array $data = []): string
+    {
+        // Check if user is logged in
+        if (!session()->get('user')) {
+            redirect()->to('/auth/login')->send();
+            exit;
+        }
+
+        echo view('admin/templates/header', $data);
+        echo view($view, $data);
+        echo view('admin/templates/footer', $data);
+        return '';
+    }
+
     // Public: List galeri dengan kategori
     public function index(): string
     {
@@ -68,7 +83,7 @@ class GalleryController extends BaseController
             'categories' => $this->categoryModel->where('type', 'gallery')->findAll(),
         ];
 
-        return $this->renderWithTemplate('admin/gallery/index', $data);
+        return $this->renderWithAdminTemplate('admin/gallery/index', $data);
     }
 
     // Admin: Form create
@@ -79,7 +94,7 @@ class GalleryController extends BaseController
             'categories' => $this->categoryModel->where('type', 'gallery')->findAll(),
         ];
 
-        return $this->renderWithTemplate('admin/gallery/create', $data);
+        return $this->renderWithAdminTemplate('admin/gallery/create', $data);
     }
 
     // Admin: Store galeri
@@ -103,7 +118,7 @@ class GalleryController extends BaseController
             foreach ($images['images'] as $image) {
                 if ($image->isValid() && !$image->hasMoved()) {
                     $newName = $image->getRandomName();
-                    $image->move(WRITEPATH . 'uploads', $newName);
+                    $image->move(FCPATH . 'uploads', $newName);
                     $uploadedImages[] = $newName;
                 }
             }
@@ -135,7 +150,7 @@ class GalleryController extends BaseController
             'categories' => $this->categoryModel->where('type', 'gallery')->findAll(),
         ];
 
-        return $this->renderWithTemplate('admin/gallery/edit', $data);
+        return $this->renderWithAdminTemplate('admin/gallery/edit', $data);
     }
 
     // Admin: Update galeri
@@ -165,8 +180,8 @@ class GalleryController extends BaseController
             if (($key = array_search($removeImage, $existingImages)) !== false) {
                 unset($existingImages[$key]);
                 // Delete file from storage
-                if (file_exists(WRITEPATH . 'uploads/' . $removeImage)) {
-                    unlink(WRITEPATH . 'uploads/' . $removeImage);
+                if (file_exists(FCPATH . 'uploads/' . $removeImage)) {
+                    unlink(FCPATH . 'uploads/' . $removeImage);
                 }
             }
         }
@@ -178,7 +193,7 @@ class GalleryController extends BaseController
             foreach ($images['images'] as $image) {
                 if ($image->isValid() && !$image->hasMoved()) {
                     $newName = $image->getRandomName();
-                    $image->move(WRITEPATH . 'uploads', $newName);
+                    $image->move(FCPATH . 'uploads', $newName);
                     $uploadedImages[] = $newName;
                 }
             }
@@ -207,8 +222,8 @@ class GalleryController extends BaseController
         // Hapus gambar dari storage
         $images = json_decode($gallery['images'], true) ?? [];
         foreach ($images as $image) {
-            if (file_exists(WRITEPATH . 'uploads/' . $image)) {
-                unlink(WRITEPATH . 'uploads/' . $image);
+            if (file_exists(FCPATH . 'uploads/' . $image)) {
+                unlink(FCPATH . 'uploads/' . $image);
             }
         }
 

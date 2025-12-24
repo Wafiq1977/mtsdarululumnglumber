@@ -13,6 +13,21 @@ class AnnouncementController extends BaseController
         $this->announcementModel = new AnnouncementModel();
     }
 
+    // Helper method for admin templates
+    protected function renderWithAdminTemplate(string $view, array $data = []): string
+    {
+        // Check if user is logged in
+        if (!session()->get('user')) {
+            redirect()->to('/auth/login')->send();
+            exit;
+        }
+
+        echo view('admin/templates/header', $data);
+        echo view($view, $data);
+        echo view('admin/templates/footer', $data);
+        return '';
+    }
+
     // Admin: List announcements
     public function adminIndex()
     {
@@ -21,7 +36,7 @@ class AnnouncementController extends BaseController
             'announcements' => $this->announcementModel->findAll(),
         ];
 
-        return $this->renderWithTemplate('admin/announcements/index', $data);
+        return $this->renderWithAdminTemplate('admin/announcements/index', $data);
     }
 
     // Admin: Form create
@@ -31,7 +46,7 @@ class AnnouncementController extends BaseController
             'title' => 'Tambah Pengumuman',
         ];
 
-        return $this->renderWithTemplate('admin/announcements/create', $data);
+        return $this->renderWithAdminTemplate('admin/announcements/create', $data);
     }
 
     // Admin: Store announcement
@@ -71,7 +86,7 @@ class AnnouncementController extends BaseController
             'announcement' => $announcement,
         ];
 
-        return $this->renderWithTemplate('admin/announcements/edit', $data);
+        return $this->renderWithAdminTemplate('admin/announcements/edit', $data);
     }
 
     // Admin: Update announcement

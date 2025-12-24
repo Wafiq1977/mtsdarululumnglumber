@@ -13,6 +13,21 @@ class EventController extends BaseController
         $this->eventModel = new EventModel();
     }
 
+    // Helper method for admin templates
+    protected function renderWithAdminTemplate(string $view, array $data = []): string
+    {
+        // Check if user is logged in
+        if (!session()->get('user')) {
+            redirect()->to('/auth/login')->send();
+            exit;
+        }
+
+        echo view('admin/templates/header', $data);
+        echo view($view, $data);
+        echo view('admin/templates/footer', $data);
+        return '';
+    }
+
     // Public: List upcoming events
     public function index()
     {
@@ -32,7 +47,7 @@ class EventController extends BaseController
             'events' => $this->eventModel->orderBy('start_date', 'DESC')->findAll(),
         ];
 
-        return $this->renderWithTemplate('admin/events/index', $data);
+        return $this->renderWithAdminTemplate('admin/events/index', $data);
     }
 
     // Admin: Form create
@@ -42,7 +57,7 @@ class EventController extends BaseController
             'title' => 'Tambah Agenda',
         ];
 
-        return $this->renderWithTemplate('admin/events/create', $data);
+        return $this->renderWithAdminTemplate('admin/events/create', $data);
     }
 
     // Admin: Store event
@@ -84,7 +99,7 @@ class EventController extends BaseController
             'event' => $event,
         ];
 
-        return $this->renderWithTemplate('admin/events/edit', $data);
+        return $this->renderWithAdminTemplate('admin/events/edit', $data);
     }
 
     // Admin: Update event

@@ -16,6 +16,21 @@ class NewsController extends BaseController
         $this->categoryModel = new CategoryModel();
     }
 
+    // Helper method for admin templates
+    protected function renderWithAdminTemplate(string $view, array $data = []): string
+    {
+        // Check if user is logged in
+        if (!session()->get('user')) {
+            redirect()->to('/auth/login')->send();
+            exit;
+        }
+
+        echo view('admin/templates/header', $data);
+        echo view($view, $data);
+        echo view('admin/templates/footer', $data);
+        return '';
+    }
+
     // Public: List berita
     public function index()
     {
@@ -94,7 +109,7 @@ class NewsController extends BaseController
             'news' => $this->newsModel->findAll(),
         ];
 
-        $this->renderWithTemplate('admin/news/index', $data);
+        $this->renderWithAdminTemplate('admin/news/index', $data);
     }
 
     // Admin: Form create
@@ -105,7 +120,7 @@ class NewsController extends BaseController
             'categories' => $this->categoryModel->where('type', 'news')->findAll(),
         ];
 
-        $this->renderWithTemplate('admin/news/create', $data);
+        $this->renderWithAdminTemplate('admin/news/create', $data);
     }
 
     // Admin: Store berita
@@ -129,7 +144,7 @@ class NewsController extends BaseController
         if ($image = $this->request->getFile('image')) {
             if ($image->isValid() && !$image->hasMoved()) {
                 $newName = $image->getRandomName();
-                $image->move(WRITEPATH . 'uploads', $newName);
+                $image->move(FCPATH . 'uploads', $newName);
                 $imagePath = $newName;
             }
         }
@@ -163,7 +178,7 @@ class NewsController extends BaseController
             'categories' => $this->categoryModel->where('type', 'news')->findAll(),
         ];
 
-        $this->renderWithTemplate('admin/news/edit', $data);
+        $this->renderWithAdminTemplate('admin/news/edit', $data);
     }
 
     // Admin: Update berita
@@ -197,7 +212,7 @@ class NewsController extends BaseController
                 }
 
                 $newName = $image->getRandomName();
-                $image->move(WRITEPATH . 'uploads', $newName);
+                $image->move(FCPATH . 'uploads', $newName);
                 $imagePath = $newName;
             }
         }
@@ -225,8 +240,8 @@ class NewsController extends BaseController
         }
 
         // Hapus gambar jika ada
-        if ($news['image'] && file_exists(WRITEPATH . 'uploads/' . $news['image'])) {
-            unlink(WRITEPATH . 'uploads/' . $news['image']);
+        if ($news['image'] && file_exists(FCPATH . 'uploads/' . $news['image'])) {
+            unlink(FCPATH . 'uploads/' . $news['image']);
         }
 
         $this->newsModel->delete($id);
