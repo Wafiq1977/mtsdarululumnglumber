@@ -41,6 +41,7 @@
                     <ul class="list-unstyled footer-links">
                         <li><a href="/profile" class="footer-link"><i class="fas fa-angle-right me-2"></i>Profil Sekolah</a></li>
                         <li><a href="/news" class="footer-link"><i class="fas fa-angle-right me-2"></i>Berita</a></li>
+                        <li><a href="/announcements" class="footer-link"><i class="fas fa-angle-right me-2"></i>Pengumuman</a></li>
                         <li><a href="/teachers" class="footer-link"><i class="fas fa-angle-right me-2"></i>Guru & Staff</a></li>
                         <li><a href="/gallery" class="footer-link"><i class="fas fa-angle-right me-2"></i>Galeri</a></li>
                         <li><a href="/contact" class="footer-link"><i class="fas fa-angle-right me-2"></i>Kontak</a></li>

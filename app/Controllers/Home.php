@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\NewsModel;
 use App\Models\AnnouncementModel;
 use App\Models\EventModel;
+use App\Models\TeacherModel;
 
 class Home extends BaseController
 {
@@ -13,12 +14,14 @@ class Home extends BaseController
         $newsModel = new NewsModel();
         $announcementModel = new AnnouncementModel();
         $eventModel = new EventModel();
+        $teacherModel = new TeacherModel();
 
         $data = [
             'title' => 'Beranda - Sekolah Kami',
             'latestNews' => $newsModel->getPublished(5),
             'announcements' => $announcementModel->where('status', 'active')->findAll(),
             'upcomingEvents' => $eventModel->where('start_date >=', date('Y-m-d'))->orderBy('start_date', 'ASC')->findAll(5),
+            'teachers' => $teacherModel->findAll(),
             'nationalNews' => $this->getNationalNews(),
             'kemenagNews' => $this->getKemenagNews(),
         ];

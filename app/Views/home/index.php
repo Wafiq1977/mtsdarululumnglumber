@@ -166,6 +166,38 @@
     </div>
 </section>
 
+<!-- Teachers and Staff Section -->
+<section id="teachers" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 text-success">Guru dan Staf</h2>
+        <div class="teachers-carousel">
+            <div class="teachers-wrapper">
+                <?php if (!empty($teachers)): ?>
+                    <?php foreach ($teachers as $teacher): ?>
+                        <div class="teacher-card">
+                            <div class="teacher-image">
+                                <img src="<?= $teacher['photo'] ? base_url('uploads/' . $teacher['photo']) : 'https://via.placeholder.com/200x200?text=' . urlencode($teacher['name']) ?>"
+                                     alt="<?= $teacher['name'] ?>" class="img-fluid">
+                            </div>
+                            <div class="teacher-info">
+                                <h5 class="teacher-name"><?= $teacher['name'] ?></h5>
+                                <p class="teacher-position text-muted mb-1"><?= $teacher['position'] ?? 'Guru' ?></p>
+                                <?php if (!empty($teacher['subject'])): ?>
+                                    <p class="teacher-subject text-muted mb-0">Mata Pelajaran: <?= $teacher['subject'] ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="text-center w-100">
+                        <p class="text-muted">Belum ada data guru yang tersedia.</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Programs Section -->
 <section id="programs" class="py-5">
     <div class="container">
@@ -3036,6 +3068,82 @@ body.home-page {
     padding: 60px 40px;
 }
 
+/* ===== TEACHERS AND STAFF SECTION ===== */
+.teachers-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.teachers-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.teachers-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+.teacher-card {
+    flex: 0 0 250px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.teacher-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(40, 167, 69, 0.3);
+}
+
+.teacher-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.teacher-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.teacher-card:hover .teacher-image img {
+    transform: scale(1.1);
+}
+
+.teacher-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.teacher-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0F3D3E;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-position {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #28a745;
+    margin-bottom: 0.25rem;
+}
+
+.teacher-subject {
+    font-size: 0.85rem;
+}
+
 /* ===== PROGRAMS SECTION ENHANCEMENTS ===== */
 .program-card {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -3782,6 +3890,27 @@ body.home-page {
     .about-content {
         padding-left: 0;
         text-align: center;
+    }
+
+    .teachers-wrapper {
+        gap: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .teacher-card {
+        flex: 0 0 200px;
+    }
+
+    .teacher-image {
+        height: 150px;
+    }
+
+    .teacher-info {
+        padding: 1rem;
+    }
+
+    .teacher-name {
+        font-size: 1rem;
     }
 
     .programs-grid {
