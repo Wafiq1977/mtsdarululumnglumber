@@ -93,9 +93,18 @@ class NewsController extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
+        // Get latest news for sidebar (exclude current news)
+        $latestNews = $this->newsModel->where('status', 'published')
+                                      ->where('id !=', $news['id'])
+                                      ->orderBy('created_at', 'DESC')
+                                      ->limit(5)
+                                      ->findAll();
+
         $data = [
             'title' => $news['title'],
             'news' => $news,
+            'latestNews' => $latestNews,
+            'categories' => $this->categoryModel->where('type', 'news')->findAll(),
         ];
 
         $this->renderWithTemplate('news/show', $data);

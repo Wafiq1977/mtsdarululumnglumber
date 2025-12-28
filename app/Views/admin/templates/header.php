@@ -309,7 +309,7 @@
                         <i class="fas fa-users"></i>
                         Guru & Staf
                     </a>
-                    <a href="/admin/galleries" class="menu-item <?= strpos(uri_string(), 'admin/galleries') === 0 ? 'active' : '' ?>">
+                    <a href="/admin/gallery" class="menu-item <?= strpos(uri_string(), 'admin/gallery') === 0 ? 'active' : '' ?>">
                         <i class="fas fa-images"></i>
                         Galeri Foto
                     </a>

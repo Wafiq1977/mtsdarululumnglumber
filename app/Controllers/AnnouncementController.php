@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\AnnouncementModel;
+use App\Models\EventModel;
 
 class AnnouncementController extends BaseController
 {
     protected $announcementModel;
+    protected $eventModel;
 
     public function __construct()
     {
         $this->announcementModel = new AnnouncementModel();
+        $this->eventModel = new EventModel();
     }
 
     // Helper method for admin templates
@@ -123,5 +126,41 @@ class AnnouncementController extends BaseController
     {
         $this->announcementModel->delete($id);
         return redirect()->to('/admin/announcements')->with('success', 'Pengumuman berhasil dihapus');
+    }
+
+    // Public: List announcements and events
+    public function index()
+    {
+        $announcements = $this->announcementModel->where('status', 'active')
+                                                 ->orderBy('created_at', 'DESC')
+                                                 ->findAll();
+
+        $events = $this->eventModel->where('start_date >=', date('Y-m-d'))
+                                   ->orderBy('start_date', 'ASC')
+                                   ->findAll();
+
+        $data = [
+            'title' => 'Pengumuman & Agenda Sekolah',
+            'announcements' => $announcements,
+            'events' => $events,
+        ];
+
+        $this->renderWithTemplate('announcements/index', $data);
+    }
+
+    // Public: Show announcement detail
+    public function show($id)
+    {
+        $announcement = $this->announcementModel->find($id);
+        if (!$announcement || $announcement['status'] !== 'active') {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        $data = [
+            'title' => $announcement['title'],
+            'announcement' => $announcement,
+        ];
+
+        $this->renderWithTemplate('announcements/show', $data);
     }
 }

@@ -62,6 +62,8 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 // Public routes
 $routes->get('/news', 'NewsController::index');
 $routes->get('/news/(:segment)', 'NewsController::show/$1');
+$routes->get('/announcements', 'AnnouncementController::index');
+$routes->get('/announcements/(:segment)', 'AnnouncementController::show/$1');
 $routes->get('/teachers', 'TeacherController::index');
 $routes->get('/teachers/(:num)', 'TeacherController::show/$1');
 $routes->get('/gallery', 'GalleryController::index');

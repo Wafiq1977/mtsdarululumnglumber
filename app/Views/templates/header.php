@@ -1563,6 +1563,11 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/announcements">
+                                <i class="fas fa-bullhorn me-1"></i>Pengumuman
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/teachers">Guru & Staff</a>
                         </li>
                         <li class="nav-item">

@@ -45,10 +45,12 @@
                             <td>
                                 <?php
                                 // Count items in this category
+                                $newsModel = new \App\Models\NewsModel();
+                                $galleryModel = new \App\Models\GalleryModel();
                                 if ($category['type'] == 'news') {
-                                    echo \App\Models\NewsModel::where('category_id', $category['id'])->countAllResults();
+                                    echo $newsModel->where('category_id', $category['id'])->countAllResults();
                                 } else {
-                                    echo \App\Models\GalleryModel::where('category_id', $category['id'])->countAllResults();
+                                    echo $galleryModel->where('category_id', $category['id'])->countAllResults();
                                 }
                                 ?> item
                             </td>
