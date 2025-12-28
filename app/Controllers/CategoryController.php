@@ -125,6 +125,17 @@ class CategoryController extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
+        // Check if category is being used
+        $newsModel = new \App\Models\NewsModel();
+        $galleryModel = new \App\Models\GalleryModel();
+
+        $newsCount = $newsModel->where('category_id', $id)->countAllResults();
+        $galleryCount = $galleryModel->where('category_id', $id)->countAllResults();
+
+        if ($newsCount > 0 || $galleryCount > 0) {
+            return redirect()->back()->with('error', 'Kategori tidak dapat dihapus karena masih digunakan oleh ' . ($newsCount + $galleryCount) . ' item.');
+        }
+
         $this->categoryModel->delete($id);
 
         return redirect()->to('/admin/categories')->with('success', 'Kategori berhasil dihapus');

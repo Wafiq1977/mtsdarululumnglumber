@@ -55,7 +55,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('categories/store', 'CategoryController::store');
     $routes->get('categories/edit/(:num)', 'CategoryController::edit/$1');
     $routes->post('categories/update/(:num)', 'CategoryController::update/$1');
-    $routes->post('categories/delete/(:num)', 'CategoryController::delete/$1');
+    $routes->delete('categories/delete/(:num)', 'CategoryController::delete/$1');
 });
 
 
