@@ -108,10 +108,10 @@ class Filters extends BaseFilters
      */
     public array $filters = [
         'csrf' => [
-            'except' => ['admin/teachers/delete/*', 'admin/teachers/update/*']
+            'except' => ['admin/teachers/delete/*', 'admin/teachers/update/*', 'admin/users/delete/*']
         ],
         'auth' => [
-            'except' => ['admin/teachers/delete/*', 'admin/teachers/update/*']
+            'except' => ['admin/teachers/delete/*', 'admin/teachers/update/*', 'admin/users/delete/*']
         ]
     ];
 }

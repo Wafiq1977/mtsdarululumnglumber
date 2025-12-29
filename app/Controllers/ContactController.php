@@ -121,6 +121,11 @@ class ContactController extends BaseController
     // Admin: Delete kontak
     public function delete($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/contacts')->with('error', 'Akses ditolak. Hanya admin yang dapat menghapus pesan kontak.');
+        }
+
         $contact = $this->contactModel->find($id);
         if (!$contact) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

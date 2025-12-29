@@ -3,9 +3,11 @@
         <h2 class="mb-1">Kelola Galeri</h2>
         <p class="text-muted mb-0">Kelola koleksi foto kegiatan dan fasilitas sekolah</p>
     </div>
+    <?php if (session()->get('user')['role'] === 'admin'): ?>
     <a href="/admin/gallery/create" class="btn btn-primary">
         <i class="fas fa-plus me-2"></i>Tambah Galeri
     </a>
+    <?php endif; ?>
 </div>
 
 <?php if (session()->getFlashdata('success')): ?>
@@ -170,6 +172,7 @@
                                            target="_blank" title="Lihat">
                                             <i class="fas fa-eye"></i>
                                         </a>
+                                        <?php if (session()->get('user')['role'] === 'admin'): ?>
                                         <a href="/admin/gallery/edit/<?= $gallery['id'] ?>" class="btn btn-sm btn-outline-warning"
                                            title="Edit">
                                             <i class="fas fa-edit"></i>
@@ -179,6 +182,7 @@
                                                 title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>

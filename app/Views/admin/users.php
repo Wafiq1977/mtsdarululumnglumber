@@ -1,18 +1,23 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h2 class="mb-1">Kelola Pengumuman</h2>
-        <p class="text-muted mb-0">Kelola pengumuman dan informasi sekolah</p>
+        <h2 class="mb-1">Kelola User</h2>
+        <p class="text-muted mb-0">Kelola pengguna sistem</p>
     </div>
-    <?php if (session()->get('user')['role'] === 'admin'): ?>
-    <a href="/admin/announcements/create" class="btn btn-primary">
-        <i class="fas fa-plus me-2"></i>Tambah Pengumuman
-    </a>
-    <?php endif; ?>
 </div>
 
 <?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>
         <?= session()->getFlashdata('success') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <?= session()->getFlashdata('error') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 <?php endif; ?>
 
@@ -22,34 +27,32 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Judul</th>
-                        <th>Status</th>
-                        <th>Tanggal Dibuat</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Dibuat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($announcements as $announcement): ?>
+                    <?php foreach ($users as $user): ?>
                         <tr>
-                            <td><?= $announcement['title'] ?></td>
+                            <td><?= $user['username'] ?></td>
+                            <td><?= $user['email'] ?></td>
                             <td>
-                                <span class="badge bg-<?= $announcement['status'] == 'active' ? 'success' : 'secondary' ?>">
-                                    <?= ucfirst($announcement['status']) ?>
+                                <span class="badge bg-<?= $user['role'] === 'admin' ? 'danger' : 'secondary' ?>">
+                                    <?= ucfirst($user['role']) ?>
                                 </span>
                             </td>
-                            <td><?= date('d/m/Y H:i', strtotime($announcement['created_at'])) ?></td>
+                            <td><?= date('d/m/Y H:i', strtotime($user['created_at'])) ?></td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <?php if (session()->get('user')['role'] === 'admin'): ?>
-                                    <a href="/admin/announcements/edit/<?= $announcement['id'] ?>" class="btn btn-sm btn-outline-warning"
-                                       title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"
-                                            onclick="confirmDelete(<?= $announcement['id'] ?>, '<?= addslashes($announcement['title']) ?>')"
-                                            title="Hapus">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    <?php if ($user['role'] !== 'admin' || session()->get('user')['id'] !== $user['id']): ?>
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                                onclick="confirmDelete(<?= $user['id'] ?>, '<?= addslashes($user['username']) ?>')"
+                                                title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     <?php endif; ?>
                                 </div>
                             </td>
@@ -59,9 +62,9 @@
             </table>
         </div>
 
-        <?php if (empty($announcements)): ?>
+        <?php if (empty($users)): ?>
             <div class="text-center py-4">
-                <p class="text-muted">Belum ada pengumuman.</p>
+                <p class="text-muted">Belum ada user.</p>
             </div>
         <?php endif; ?>
     </div>
@@ -78,15 +81,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Apakah Anda yakin ingin menghapus pengumuman <strong id="deleteAnnouncementTitle"></strong>?</p>
+                <p>Apakah Anda yakin ingin menghapus user <strong id="deleteUserName"></strong>?</p>
                 <div class="alert alert-warning">
                     <i class="fas fa-exclamation-triangle me-2"></i>
-                    <strong>Perhatian:</strong> Pengumuman yang dihapus tidak dapat dikembalikan.
+                    <strong>Perhatian:</strong> User yang dihapus tidak dapat dikembalikan.
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 <form id="deleteForm" method="post" style="display: inline;">
+                    <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger">
                         <i class="fas fa-trash me-2"></i>Ya, Hapus
@@ -105,9 +109,9 @@
 </style>
 
 <script>
-function confirmDelete(announcementId, announcementTitle) {
-    document.getElementById('deleteAnnouncementTitle').textContent = announcementTitle;
-    document.getElementById('deleteForm').action = `/admin/announcements/delete/${announcementId}`;
+function confirmDelete(userId, userName) {
+    document.getElementById('deleteUserName').textContent = userName;
+    document.getElementById('deleteForm').action = `/admin/users/delete/${userId}`;
 
     const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
     deleteModal.show();

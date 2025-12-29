@@ -31,6 +31,11 @@ class AdminController extends AdminBaseController
 
     public function users()
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/dashboard')->with('error', 'Akses ditolak. Hanya admin yang dapat mengelola user.');
+        }
+
         $userModel = new UserModel();
         $data = [
             'title' => 'Manajemen User',
@@ -38,6 +43,34 @@ class AdminController extends AdminBaseController
         ];
 
         $this->renderWithTemplate('admin/users', $data);
+    }
+
+    public function deleteUser($id)
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/dashboard')->with('error', 'Akses ditolak. Hanya admin yang dapat menghapus user.');
+        }
+
+        $userModel = new UserModel();
+        $targetUser = $userModel->find($id);
+
+        if (!$targetUser) {
+            return redirect()->to('/admin/users')->with('error', 'User tidak ditemukan.');
+        }
+
+        // Prevent deleting self or other admins
+        if ($targetUser['id'] === $user['id']) {
+            return redirect()->to('/admin/users')->with('error', 'Anda tidak dapat menghapus akun sendiri.');
+        }
+
+        if ($targetUser['role'] === 'admin') {
+            return redirect()->to('/admin/users')->with('error', 'Tidak dapat menghapus admin lain.');
+        }
+
+        $userModel->delete($id);
+
+        return redirect()->to('/admin/users')->with('success', 'User berhasil dihapus.');
     }
 
     public function announcements()

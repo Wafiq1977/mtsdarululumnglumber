@@ -45,6 +45,11 @@ class AnnouncementController extends BaseController
     // Admin: Form create
     public function create()
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/announcements')->with('error', 'Akses ditolak. Hanya admin yang dapat menambah pengumuman.');
+        }
+
         $data = [
             'title' => 'Tambah Pengumuman',
         ];
@@ -79,6 +84,11 @@ class AnnouncementController extends BaseController
     // Admin: Form edit
     public function edit($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/announcements')->with('error', 'Akses ditolak. Hanya admin yang dapat mengedit pengumuman.');
+        }
+
         $announcement = $this->announcementModel->find($id);
         if (!$announcement) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -95,6 +105,11 @@ class AnnouncementController extends BaseController
     // Admin: Update announcement
     public function update($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/announcements')->with('error', 'Akses ditolak. Hanya admin yang dapat mengupdate pengumuman.');
+        }
+
         $announcement = $this->announcementModel->find($id);
         if (!$announcement) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -124,6 +139,11 @@ class AnnouncementController extends BaseController
     // Admin: Delete announcement
     public function delete($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/announcements')->with('error', 'Akses ditolak. Hanya admin yang dapat menghapus pengumuman.');
+        }
+
         $this->announcementModel->delete($id);
         return redirect()->to('/admin/announcements')->with('success', 'Pengumuman berhasil dihapus');
     }

@@ -53,6 +53,11 @@ class EventController extends BaseController
     // Admin: Form create
     public function create()
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/events')->with('error', 'Akses ditolak. Hanya admin yang dapat menambah agenda.');
+        }
+
         $data = [
             'title' => 'Tambah Agenda',
         ];
@@ -66,8 +71,8 @@ class EventController extends BaseController
         $rules = [
             'title' => 'required|min_length[3]|max_length[255]',
             'description' => 'permit_empty',
-            'start_date' => 'required|valid_date[Y-m-d H:i:s]',
-            'end_date' => 'permit_empty|valid_date[Y-m-d H:i:s]',
+            'start_date' => 'required',
+            'end_date' => 'permit_empty',
         ];
 
         if (!$this->validate($rules)) {
@@ -89,6 +94,11 @@ class EventController extends BaseController
     // Admin: Form edit
     public function edit($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/events')->with('error', 'Akses ditolak. Hanya admin yang dapat mengedit agenda.');
+        }
+
         $event = $this->eventModel->find($id);
         if (!$event) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -105,6 +115,11 @@ class EventController extends BaseController
     // Admin: Update event
     public function update($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/events')->with('error', 'Akses ditolak. Hanya admin yang dapat mengupdate agenda.');
+        }
+
         $event = $this->eventModel->find($id);
         if (!$event) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -113,8 +128,8 @@ class EventController extends BaseController
         $rules = [
             'title' => 'required|min_length[3]|max_length[255]',
             'description' => 'permit_empty',
-            'start_date' => 'required|valid_date[Y-m-d H:i:s]',
-            'end_date' => 'permit_empty|valid_date[Y-m-d H:i:s]',
+            'start_date' => 'required',
+            'end_date' => 'permit_empty',
         ];
 
         if (!$this->validate($rules)) {
@@ -136,6 +151,11 @@ class EventController extends BaseController
     // Admin: Delete event
     public function delete($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/events')->with('error', 'Akses ditolak. Hanya admin yang dapat menghapus agenda.');
+        }
+
         $this->eventModel->delete($id);
         return redirect()->to('/admin/events')->with('success', 'Agenda berhasil dihapus');
     }

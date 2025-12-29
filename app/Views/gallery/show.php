@@ -170,7 +170,8 @@
 .gallery-image {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f8f9fa;
     transition: transform 0.3s ease;
 }
 

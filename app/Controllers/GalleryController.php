@@ -89,6 +89,11 @@ class GalleryController extends BaseController
     // Admin: Form create
     public function create(): string
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/gallery')->with('error', 'Akses ditolak. Hanya admin yang dapat menambah galeri.');
+        }
+
         $data = [
             'title' => 'Tambah Galeri',
             'categories' => $this->categoryModel->where('type', 'gallery')->findAll(),
@@ -139,6 +144,11 @@ class GalleryController extends BaseController
     // Admin: Form edit
     public function edit($id): string
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/gallery')->with('error', 'Akses ditolak. Hanya admin yang dapat mengedit galeri.');
+        }
+
         $gallery = $this->galleryModel->find($id);
         if (!$gallery) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -156,6 +166,11 @@ class GalleryController extends BaseController
     // Admin: Update galeri
     public function update($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/gallery')->with('error', 'Akses ditolak. Hanya admin yang dapat mengupdate galeri.');
+        }
+
         $gallery = $this->galleryModel->find($id);
         if (!$gallery) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -214,6 +229,11 @@ class GalleryController extends BaseController
     // Admin: Delete galeri
     public function delete($id)
     {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'admin') {
+            return redirect()->to('/admin/gallery')->with('error', 'Akses ditolak. Hanya admin yang dapat menghapus galeri.');
+        }
+
         $gallery = $this->galleryModel->find($id);
         if (!$gallery) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
