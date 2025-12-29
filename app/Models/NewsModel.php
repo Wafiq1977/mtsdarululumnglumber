@@ -12,7 +12,6 @@ class NewsModel extends Model
     protected $useTimestamps = true;
     protected $validationRules = [
         'title' => 'required|min_length[3]|max_length[255]',
-        'slug' => 'required|is_unique[news.slug,id,{id}]',
         'content' => 'required',
         'category_id' => 'required|integer',
         'status' => 'required|in_list[draft,published]',

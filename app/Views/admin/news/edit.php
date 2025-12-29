@@ -17,7 +17,6 @@
     <div class="card-body">
         <form action="/admin/news/update/<?= $news['id'] ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
-            <input type="hidden" name="_method" value="PUT">
 
             <div class="row">
                 <div class="col-md-8">

@@ -69,7 +69,7 @@
             </a>
             <div class="tool-item">
                 <i class="fas fa-calendar-alt"></i>
-                <span>Didirikan: 2010</span>
+                <span>Didirikan: 1987</span>
             </div>
         </div>
     </div>

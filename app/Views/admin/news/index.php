@@ -26,12 +26,7 @@
                     <?php foreach ($news as $item): ?>
                         <tr>
                             <td><?= $item['title'] ?></td>
-                            <td>
-                                <?php
-                                // Get category name - in real implementation, join with categories table
-                                echo 'Kategori ' . $item['category_id'];
-                                ?>
-                            </td>
+                            <td><?= $item['category_name'] ?></td>
                             <td>
                                 <span class="badge bg-<?= $item['status'] == 'published' ? 'success' : 'secondary' ?>">
                                     <?= ucfirst($item['status']) ?>

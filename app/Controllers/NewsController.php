@@ -113,9 +113,13 @@ class NewsController extends BaseController
     // Admin: List berita
     public function adminIndex()
     {
+        $news = $this->newsModel->select('news.*, categories.name as category_name')
+                                ->join('categories', 'categories.id = news.category_id')
+                                ->findAll();
+
         $data = [
             'title' => 'Kelola Berita',
-            'news' => $this->newsModel->findAll(),
+            'news' => $news,
         ];
 
         $this->renderWithAdminTemplate('admin/news/index', $data);
@@ -216,8 +220,8 @@ class NewsController extends BaseController
         if ($image = $this->request->getFile('image')) {
             if ($image->isValid() && !$image->hasMoved()) {
                 // Hapus gambar lama jika ada
-                if ($news['image'] && file_exists(WRITEPATH . 'uploads/' . $news['image'])) {
-                    unlink(WRITEPATH . 'uploads/' . $news['image']);
+                if ($news['image'] && file_exists(FCPATH . 'uploads/' . $news['image'])) {
+                    unlink(FCPATH . 'uploads/' . $news['image']);
                 }
 
                 $newName = $image->getRandomName();
