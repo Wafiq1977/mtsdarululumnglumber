@@ -18,35 +18,61 @@
         </a>
     </div>
 
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="/uploads/WhatsApp Video 2025-12-23 at 21.57.01.mp4" type="video/mp4">
-            <!-- Fallback image -->
-            <img src="/uploads/fotohero.jpg" alt="Hero Background" class="hero-fallback">
-        </video>
-
-        <div class="hero-content">
-
-            <div class="container">
-
-                <div class="row align-items-center min-vh-100">
-
-                    <div class="col-lg-8">
-
-                    </div>
-
-                    <div class="col-lg-4 d-none d-lg-block">
-
-                        <div class="hero-visual">
-
-                        </div>
-
-                    </div>
-
+    <!-- Hero Carousel -->
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+            <!-- Slide 1: Video -->
+            <div class="carousel-item active">
+                <div class="hero-slide" style="background-image: url('<?= base_url('uploads/fotohero.jpg') ?>');">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="<?= base_url('uploads/WhatsApp Video 2025-12-23 at 21.57.01.mp4') ?>" type="video/mp4">
+                        <!-- Fallback image -->
+                        <img src="<?= base_url('uploads/fotohero.jpg') ?>" alt="Hero Background" class="hero-fallback">
+                    </video>
                 </div>
-
             </div>
 
+            <!-- Slide 2: Photo -->
+            <div class="carousel-item">
+                <div class="hero-slide" style="background-image: url('<?= base_url('uploads/fotohero.jpg') ?>');"></div>
+            </div>
+
+            <!-- Slide 3: Another Photo (placeholder) -->
+            <div class="carousel-item">
+                <div class="hero-slide" style="background-image: url('<?= base_url('uploads/fotohero.jpg') ?>'); filter: brightness(0.8);"></div>
+            </div>
         </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+    </div>
+
+    <div class="hero-content">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8">
+                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="hero-visual">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ===== SCHOOL PROFILE TOOL SECTION ===== -->
@@ -147,11 +173,11 @@
                         Assalamualaikum Wr. Wb.
                     </p>
                     <p class="text-sambutan">
-                        Puji syukur kehadirat Allah SWT yang telah melimpahkan rahmat dan hidayah-Nya kepada kita semua. Selamat datang di website resmi MTS Darul Ulum Nglumber. Website ini kami hadirkan sebagai media informasi dan komunikasi bagi seluruh civitas akademika, alumni, serta masyarakat luas.
+                        Alhamdulillah, segala puji dan syukur senantiasa kita panjatkan ke hadirat Allah SWT yang telah melimpahkan nikmat dan rahmatnya kepada kita semua sehingga kita dapat menjalankan aktifitas sehari-hari. Amin. 
                     </p>
                     <div class="sambutan-full-text">
                         <p class="text-sambutan">
-                            Kami berharap, melalui website ini, Anda dapat mengenal lebih dekat profil sekolah kami, program-program unggulan, serta berbagai prestasi yang telah kami raih. MTS Darul Ulum Nglumber berkomitmen untuk mencetak generasi yang tidak hanya unggul dalam bidang akademik, tetapi juga berakhlak mulia dan berwawasan Islam yang kuat. Mari bersama-sama kita majukan pendidikan untuk masa depan generasi penerus bangsa yang lebih baik.
+                            Shalawat dan salam semoga tetap terlimpahkan kepada Nabi Muhammad SAW, keluarganya, sahabatnya, dan para pengikutnya, serta mudah-mudahan kita semua mendapatkan pertolongan dari-nya kelak di yaumul akhir. MTs Daru Ulum Nglumber sebagai salah satu Madrasah yang senantiasa berusaha mewujudkan apa yang menjadi harapan pemerintah dan masyarakat melalui serangkaian kegiatan dan program kerja yang berorientasi kepada peningkatan kualitas dan daya saing lulusan serta berakhlaqul karimah. Dalam rangka peningkatan mutu pendidikan yang berkualitas, Implementasi Kurikulum Merdeka dipandang sangat penting dimana penerapan sistem pembelajaran yang didukung oleh sarana dan prasarana  pendidikan yang memadai. Relevansi kebutuhan pendidikan serta pemanfaatan media pendidikan berupa teknologi digital menjadi hal yang tidak bisa dihindari. disamping itu upaya peningkatan kualitas peserta didik, tenaga pendidik dan peningkatan seluruh SDM di satuan pendidikan perlu adanya kerjasama dengan berbagai instansi ataupun masyarakat. Untuk memperoleh informasi selengkapnya Kami persilahkan untuk menelusuri lebih lanjut Website Madrasah Tsanawiyah Darrul Ulum Nglumber. Website ini kami hadirkan dalam rangka untuk menjalin komunikasi, silaturrahmi dan mengawali kerjasama yang baik antara pihak Madrasah, Peserta didik, Wali murid, Masyarakat dan Pemerintah, dan pada akhirnya komunikasi ini akan sangat berguna bagi semua pihak yang berkepentingan dengan dunia pendidikan. Semoga situs web ini dapat memberikan manfaat bagi siapa saja yang mengunjungi. Kami mengucapkan terima kasih atas kepercayaan masyarakat yang telah memilih Madrasah kami bagi putra dan putrinya untuk menempuh pendidikan. Sekian dan Terima Kasih.
                         </p>
                         <p class="text-sambutan">
                             Wassalamualaikum Wr. Wb.
@@ -760,6 +786,70 @@
     position: relative;
     min-height: 100vh;
     overflow: hidden;
+}
+
+/* Hero Carousel Styles */
+#heroCarousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#heroCarousel .carousel-inner {
+    height: 100%;
+}
+
+#heroCarousel .carousel-item {
+    height: 100%;
+    position: relative;
+}
+
+#heroCarousel .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1.5s ease-in-out;
+}
+
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    z-index: 4;
+}
+
+#heroCarousel .carousel-control-prev:hover,
+#heroCarousel .carousel-control-next:hover {
+    opacity: 1;
+}
+
+#heroCarousel .carousel-indicators {
+    bottom: 20px;
+    z-index: 5;
+}
+
+#heroCarousel .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+#heroCarousel .carousel-indicators button.active {
+    background-color: #FFD700;
+    border-color: #FFD700;
 }
 
 .hero-video {

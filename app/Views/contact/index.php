@@ -102,29 +102,17 @@
                             <p style="color: #495057;">mtsdunglumber@gmail.com</p>
                         </div>
 
-                        <div class="info-item">
-                            <div class="info-icon mb-3">
-                                <i class="fas fa-clock fa-2x" style="color: #D4AF37;"></i>
-                            </div>
-                            <h5 style="color: #0F3D3E;">Jam Operasional</h5>
-                            <p style="color: #495057; margin-bottom: 0.25rem;"><strong>Senin - Jumat:</strong> 07:00 - 15:00</p>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Social Media -->
-                    <div class="mt-4">
-                        <h5 style="color: #0F3D3E;">Ikuti Kami</h5>
-                        <div class="social-links d-flex flex-column gap-2">
-                            <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none; text-align: left;">
-                                <i class="fab fa-facebook-f me-2"></i>lpm-NU Darul Ulum Kepohbaru
-                            </a>
-                            <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none; text-align: left;">
-                                <i class="fab fa-instagram me-2"></i>lpmnudarululum.kepohbaru
-                            </a>
-                            <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none; text-align: left;">
-                                <i class="fab fa-youtube me-2"></i>Darul Ulum Kepohbaru
-                            </a>
-                        </div>
+            <!-- Google Maps Section -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4" style="color: #0F3D3E;">Lokasi Kami</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe src="https://maps.google.com/maps?q=MTS+Darul+Ulum+Ng+Lumber&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

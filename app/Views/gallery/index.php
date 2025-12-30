@@ -218,7 +218,7 @@
 
 .gallery-images {
     position: relative;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
 }
 
@@ -233,10 +233,6 @@
 .image-item {
     position: relative;
     overflow: hidden;
-}
-
-.image-item.image-1 {
-    grid-row: span 2;
 }
 
 .gallery-img {
@@ -334,10 +330,6 @@
     .images-grid {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr);
-    }
-
-    .image-item.image-1 {
-        grid-row: span 1;
     }
 
     .gallery-card {

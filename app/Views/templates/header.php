@@ -1347,6 +1347,18 @@
     text-align: center;
     overflow-x: auto;
     padding: 1rem;
+    position: relative;
+}
+.org-chart-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: #D4AF37;
+    z-index: 0;
 }
 .org-level-new {
     display: flex;
@@ -1361,14 +1373,25 @@
     content: '';
     position: absolute;
     top: 50%;
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    background: #e9ecef;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: #D4AF37;
     z-index: 0;
 }
 .org-level-new:first-child::before, .org-level-new:last-child::before {
     display: none;
+}
+.org-level-new:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 2rem;
+    background: #D4AF37;
+    z-index: 0;
 }
 .org-node-new {
     background: #fff;

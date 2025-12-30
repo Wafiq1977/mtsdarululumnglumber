@@ -16,10 +16,10 @@
                     </div>
                     <p class="mb-4 opacity-75">Madrasah Tsanawiyah yang berkomitmen memberikan pendidikan Islam terpadu berkualitas tinggi untuk mencetak generasi unggul bangsa.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                        <a href="https://www.facebook.com/share/1E7AMa4fuo/" class="social-link facebook" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                        <a href="https://www.instagram.com/lpmnudarululum.kepohbaru?igsh=dW02b2VuczcwbDR5" class="social-link instagram" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#" class="social-link youtube" aria-label="YouTube">
