@@ -29,6 +29,98 @@ class Home extends BaseController
         $this->renderWithTemplate('home/index', $data);
     }
 
+    public function programs()
+    {
+        $data = [
+            'title' => 'Program Unggulan - MTS Darul Ulum Nglumber',
+            'programs' => $this->getPrograms()
+        ];
+
+        $this->renderWithTemplate('programs/index', $data);
+    }
+
+    public function programDetail($slug)
+    {
+        $programs = $this->getPrograms();
+        $program = null;
+
+        foreach ($programs as $p) {
+            if ($p['slug'] === $slug) {
+                $program = $p;
+                break;
+            }
+        }
+
+        if (!$program) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Program tidak ditemukan");
+        }
+
+        $data = [
+            'title' => $program['title'] . ' - MTS Darul Ulum Nglumber',
+            'program' => $program
+        ];
+
+        $this->renderWithTemplate('programs/show', $data);
+    }
+
+    private function getPrograms()
+    {
+        return [
+            [
+                'slug' => 'kurikulum-islam',
+                'title' => 'Kurikulum Islam',
+                'icon' => 'fas fa-quran',
+                'color' => '#FFD700',
+                'short_desc' => 'Penguatan program tahfidz, BTQ, dan akhlak islami',
+                'description' => 'Program Kurikulum Islam di MTS Darul Ulum Nglumber dirancang untuk memberikan pendidikan Islam yang komprehensif dan berkualitas tinggi. Program ini mencakup berbagai kegiatan yang bertujuan membentuk karakter siswa yang berakhlak mulia, memiliki pengetahuan agama yang mendalam, dan mampu mengamalkan ajaran Islam dalam kehidupan sehari-hari.',
+                'features' => [
+                    'Tahfidz Al-Quran dengan metode yang efektif',
+                    'Belajar Tahsin dan Tajwid',
+                    'Pelajaran Akidah, Fiqih, dan Akhlaq',
+                    'Kegiatan Praktik Ibadah',
+                    'Kultum dan Ceramah Agama',
+                    'Pengembangan Karakter Islami'
+                ],
+                'image' => 'kurikulum-islam.jpg'
+            ],
+            [
+                'slug' => 'ekstrakurikuler',
+                'title' => 'Ekstrakurikuler',
+                'icon' => 'fas fa-users',
+                'color' => '#28a745',
+                'short_desc' => 'Berbagai kegiatan sesuai minat siswa',
+                'description' => 'Program ekstrakurikuler di MTS Darul Ulum Nglumber dirancang untuk mengembangkan potensi siswa di luar kegiatan akademik. Dengan berbagai pilihan kegiatan, siswa dapat menemukan dan mengembangkan bakat serta minat mereka, sekaligus belajar tentang teamwork, disiplin, dan tanggung jawab.',
+                'features' => [
+                    'Pramuka',
+                    'Paskibra',
+                    'Basket dan Sepak Bola',
+                    'Seni Musik dan Tari',
+                    'Karya Ilmiah Remaja (KIR)',
+                    'English Club',
+                    'Komputer dan IT'
+                ],
+                'image' => 'ekstrakurikuler.jpg'
+            ],
+            [
+                'slug' => 'teknologi-digital',
+                'title' => 'Teknologi Digital',
+                'icon' => 'fas fa-laptop',
+                'color' => '#007bff',
+                'short_desc' => 'Pembelajaran dengan teknologi modern',
+                'description' => 'Program Teknologi Digital di MTS Darul Ulum Nglumber mempersiapkan siswa menghadapi era digital dengan memberikan pengetahuan dan keterampilan teknologi yang diperlukan. Program ini mencakup pembelajaran komputer, internet, dan aplikasi digital yang relevan dengan kebutuhan zaman.',
+                'features' => [
+                    'Komputer Dasar dan Microsoft Office',
+                    'Internet dan Keamanan Digital',
+                    'Pemrograman Dasar',
+                    'Desain Grafis',
+                    'Robotik dan Elektronika',
+                    'Penggunaan Media Sosial yang Bijak'
+                ],
+                'image' => 'teknologi-digital.jpg'
+            ]
+        ];
+    }
+
     private function getNationalNews()
     {
         // Try to fetch real news from RSS feed or API

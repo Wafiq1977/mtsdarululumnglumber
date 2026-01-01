@@ -80,6 +80,8 @@ $routes->get('/profile/vision', 'ProfileController::vision');
 $routes->get('/profile/history', 'ProfileController::history');
 $routes->get('/profile/structure', 'ProfileController::structure');
 $routes->get('/profile/facilities', 'ProfileController::facilities');
+$routes->get('/programs', 'Home::programs');
+$routes->get('/programs/(:segment)', 'Home::programDetail/$1');
 
 // SEO routes
 $routes->get('/sitemap.xml', 'SeoController::sitemap');

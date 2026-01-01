@@ -230,32 +230,46 @@
         <h2 class="text-center mb-5 text-success">Program Unggulan</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card text-center h-100 shadow-sm program-card">
+                <div class="card text-center h-100 shadow-sm program-card" onclick="window.location.href='/programs/kurikulum-islam'" style="cursor: pointer;">
                     <div class="card-body">
                         <i class="fas fa-quran fa-3x mb-3" style="color: #FFD700;"></i>
                         <h5 class="card-title">Kurikulum Islam</h5>
                         <p class="card-text text-muted">Penguatan program tahfidz, BTQ, dan akhlak islami</p>
+                        <div class="btn btn-outline-success mt-3">
+                            <i class="fas fa-arrow-right me-2"></i>Lihat Detail
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card text-center h-100 shadow-sm program-card">
+                <div class="card text-center h-100 shadow-sm program-card" onclick="window.location.href='/programs/ekstrakurikuler'" style="cursor: pointer;">
                     <div class="card-body">
                         <i class="fas fa-users fa-3x mb-3" style="color: #FFD700;"></i>
                         <h5 class="card-title">Ekstrakurikuler</h5>
                         <p class="card-text text-muted">Berbagai kegiatan sesuai minat siswa</p>
+                        <div class="btn btn-outline-success mt-3">
+                            <i class="fas fa-arrow-right me-2"></i>Lihat Detail
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card text-center h-100 shadow-sm program-card">
+                <div class="card text-center h-100 shadow-sm program-card" onclick="window.location.href='/programs/teknologi-digital'" style="cursor: pointer;">
                     <div class="card-body">
                         <i class="fas fa-laptop fa-3x mb-3" style="color: #FFD700;"></i>
                         <h5 class="card-title">Teknologi Digital</h5>
                         <p class="card-text text-muted">Pembelajaran dengan teknologi modern</p>
+                        <div class="btn btn-outline-success mt-3">
+                            <i class="fas fa-arrow-right me-2"></i>Lihat Detail
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/programs" class="btn" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
+                <i class="fas fa-list me-2"></i>Lihat Semua Program
+            </a>
         </div>
     </div>
 </section>
@@ -3237,15 +3251,18 @@ body.home-page {
 /* ===== PROGRAMS SECTION ENHANCEMENTS ===== */
 .program-card {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid transparent;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.8));
+    backdrop-filter: blur(10px);
     cursor: pointer;
 }
 
 .program-card:hover,
 .program-card:active {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
-    border-color: #28a745;
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(40, 167, 69, 0.2);
+    border-color: rgba(212, 175, 55, 0.4);
 }
 
 .program-card .card-body {
@@ -3263,6 +3280,27 @@ body.home-page {
 .program-card:hover i {
     transform: scale(1.1) rotate(5deg);
     color: #28a745 !important;
+}
+
+.program-card .btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.program-card:hover .btn-outline-success {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.program-card .btn-outline-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
 }
 
 /* ===== NEWS SECTION ENHANCEMENTS ===== */
