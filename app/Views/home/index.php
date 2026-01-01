@@ -345,24 +345,24 @@
     </div>
 </section>
 
-<!-- KEMENAG News Section -->
-<section id="kemenag-news" class="py-5">
+<!-- KEMENDIKBUD News Section -->
+<section id="kemendikbud-news" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-5 text-success">Berita Kementerian Agama RI</h2>
+        <h2 class="text-center mb-5 text-success">Berita Kementerian Pendidikan RI</h2>
         <div class="row">
-            <?php if (!empty($kemenagNews)): ?>
-                <?php foreach ($kemenagNews as $news): ?>
+            <?php if (!empty($kemendikbudNews)): ?>
+                <?php foreach ($kemendikbudNews as $news): ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm kemenag-news-card">
+                        <div class="card h-100 shadow-sm kemendikbud-news-card">
                             <img src="<?= $news['urlToImage'] ?? 'https://via.placeholder.com/400x250' ?>"
-                                 class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                                  class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title text-success"><?= $news['title'] ?></h5>
                                 <p class="card-text text-muted"><?= substr($news['description'], 0, 100) ?>...</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-muted">
-                                        <i class="fas fa-mosque me-1"></i>
-                                        <?= $news['source']['name'] ?? 'Kemenag.go.id' ?>
+                                        <i class="fas fa-graduation-cap me-1"></i>
+                                        <?= $news['source']['name'] ?? 'Kemendikbud.go.id' ?>
                                     </small>
                                     <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-sm" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #0F3D3E; border: none;">
                                         <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
@@ -374,7 +374,7 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="col-12 text-center">
-                    <p class="text-muted">Berita Kementerian Agama sedang dimuat...</p>
+                    <p class="text-muted">Berita Kementerian Pendidikan sedang dimuat...</p>
                 </div>
             <?php endif; ?>
         </div>

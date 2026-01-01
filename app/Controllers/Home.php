@@ -23,7 +23,7 @@ class Home extends BaseController
             'upcomingEvents' => $eventModel->where('start_date >=', date('Y-m-d'))->orderBy('start_date', 'ASC')->findAll(5),
             'teachers' => $teacherModel->findAll(),
             'nationalNews' => $this->getNationalNews(),
-            'kemenagNews' => $this->getKemenagNews(),
+            'kemendikbudNews' => $this->getKemendikbudNews(),
         ];
 
         $this->renderWithTemplate('home/index', $data);
@@ -123,28 +123,125 @@ class Home extends BaseController
 
     private function getNationalNews()
     {
-        // Try to fetch real news from RSS feed or API
-        $news = $this->fetchFromRSS();
+        // Check cache first
+        $cache = \Config\Services::cache();
+        $cacheKey = 'national_news_v2'; // Changed key to force refresh
+        $cachedNews = $cache->get($cacheKey);
 
-        // If RSS fails, return dummy data
-        if (empty($news)) {
-            return $this->getDummyNews();
+        if ($cachedNews !== null) {
+            return $cachedNews;
         }
 
-        return array_slice($news, 0, 3); // Return only 3 latest news
+        $apiKey = getenv('NEWSAPI_KEY') ?: '27fb318e335b42078b472ab90956e5cb'; // Use a valid key or environment variable
+        $url = "https://newsapi.org/v2/top-headlines?country=id&apiKey={$apiKey}";
+
+        $client = \Config\Services::curlrequest([
+            'timeout' => 10,
+        ]);
+
+        $news = [];
+        try {
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'User-Agent' => 'MTS-Darul-Ulum-App/1.0',
+                ]
+            ]);
+
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+
+            if ($data && isset($data['articles'])) {
+                foreach ($data['articles'] as $article) {
+                    if (!empty($article['urlToImage'])) { // Hanya tampilkan berita dengan gambar
+                        $news[] = [
+                            'title' => $article['title'],
+                            'description' => $article['description'] ?: '',
+                            'url' => $article['url'],
+                            'urlToImage' => $article['urlToImage'],
+                            'publishedAt' => $article['publishedAt'],
+                            'source' => ['name' => $article['source']['name'] ?? 'Nasional']
+                        ];
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // Log the error or handle it gracefully
+            log_message('error', 'NewsAPI fetch failed for National News: ' . $e->getMessage());
+        }
+
+        // If no news from API, return dummy data
+        if (empty($news)) {
+            $news = $this->getDummyNews();
+        }
+
+        $news = array_slice($news, 0, 3); // Return only 3 latest news
+
+        // Cache for 1 hour
+        $cache->save($cacheKey, $news, 3600);
+
+        return $news;
     }
 
-    private function getKemenagNews()
+    private function getKemendikbudNews()
     {
-        // Try to fetch real news from KEMENAG RSS feed
-        $news = $this->fetchFromKemenagRSS();
+        // Check cache first
+        $cache = \Config\Services::cache();
+        $cacheKey = 'kemendikbud_news_v2'; // Changed key to force refresh
+        $cachedNews = $cache->get($cacheKey);
 
-        // If RSS fails, return dummy data
-        if (empty($news)) {
-            return $this->getDummyKemenagNews();
+        if ($cachedNews !== null) {
+            return $cachedNews;
         }
 
-        return array_slice($news, 0, 3); // Return only 3 latest news
+        $apiKey = getenv('NEWSAPI_KEY') ?: '27fb318e335b42078b472ab90956e5cb'; // Use a valid key or environment variable
+        $query = 'kemendikbud';
+        $url = "https://newsapi.org/v2/everything?q=" . urlencode($query) . "&language=id&sortBy=publishedAt&apiKey={$apiKey}";
+
+        $client = \Config\Services::curlrequest([
+            'timeout' => 10,
+        ]);
+
+        $news = [];
+        try {
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'User-Agent' => 'MTS-Darul-Ulum-App/1.0',
+                ]
+            ]);
+
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+
+            if ($data && isset($data['articles'])) {
+                foreach ($data['articles'] as $article) {
+                    if (!empty($article['urlToImage'])) { // Hanya tampilkan berita dengan gambar
+                        $news[] = [
+                            'title' => $article['title'],
+                            'description' => $article['description'] ?: '',
+                            'url' => $article['url'],
+                            'urlToImage' => $article['urlToImage'],
+                            'publishedAt' => $article['publishedAt'],
+                            'source' => ['name' => $article['source']['name'] ?? 'Kemendikbud.go.id']
+                        ];
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // Log the error or handle it gracefully
+            log_message('error', 'NewsAPI fetch failed for Kemendikbud: ' . $e->getMessage());
+        }
+
+        // If no news from API, return dummy data
+        if (empty($news)) {
+            $news = $this->getDummyKemenagNews();
+        }
+
+        $news = array_slice($news, 0, 3); // Return only 3 latest news
+
+        // Cache for 1 hour
+        $cache->save($cacheKey, $news, 3600);
+
+        return $news;
     }
 
     private function fetchFromKemenagRSS()

@@ -6,6 +6,10 @@
                 <i class="fas fa-newspaper me-2" style="color: #D4AF37;"></i>
                 <?= $selectedCategory ?: 'Berita Sekolah' ?>
             </h1>
+            <div class="mt-3">
+                <a href="/news" class="btn btn-outline-primary me-2">Berita Sekolah</a>
+                <a href="#api-news" class="btn btn-outline-success">Berita API Nasional & Kemendikbud</a>
+            </div>
         </div>
     </div>
 
@@ -95,3 +99,70 @@
         </div>
     <?php endif; ?>
 </div>
+
+<!-- API News Sections -->
+<section id="api-news" class="py-5 bg-light">
+    <div class="container">
+        <!-- National News -->
+        <div class="mb-5">
+            <h3 class="text-center mb-4 text-success">
+                <i class="fas fa-newspaper me-2" style="color: #D4AF37;"></i>
+                Berita Nasional
+            </h3>
+            <div class="row">
+                <?php if (!empty($nationalNews)): ?>
+                    <?php foreach ($nationalNews as $news): ?>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100 shadow-sm" style="border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 15px; overflow: hidden;">
+                                <img src="<?= $news['urlToImage'] ?: base_url('assets/images/default-news.jpg') ?>" class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                                <div class="card-body d-flex flex-column" style="background: linear-gradient(135deg, rgba(15, 61, 62, 0.05), rgba(26, 74, 74, 0.05));">
+                                    <h5 class="card-title" style="color: #0F3D3E;"><?= $news['title'] ?></h5>
+                                    <p class="card-text flex-grow-1" style="color: #495057;"><?= substr(strip_tags($news['description']), 0, 120) ?>...</p>
+                                    <div class="mt-auto">
+                                        <p class="text-muted small mb-2">Sumber: <?= $news['source']['name'] ?? $news['source'] ?> | <?= date('d M Y', strtotime($news['publishedAt'])) ?></p>
+                                        <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-sm" style="background: linear-gradient(135deg, #D4AF37, #f4c430); color: #0F3D3E; border: none;">Baca Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Berita nasional sedang dimuat...</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Kemendikbud News -->
+        <div>
+            <h3 class="text-center mb-4 text-success">
+                <i class="fas fa-graduation-cap me-2" style="color: #D4AF37;"></i>
+                Berita Kementerian Pendidikan RI
+            </h3>
+            <div class="row">
+                <?php if (!empty($kemendikbudNews)): ?>
+                    <?php foreach ($kemendikbudNews as $news): ?>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100 shadow-sm" style="border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 15px; overflow: hidden;">
+                                <img src="<?= $news['urlToImage'] ?: base_url('assets/images/default-news.jpg') ?>" class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                                <div class="card-body d-flex flex-column" style="background: linear-gradient(135deg, rgba(15, 61, 62, 0.05), rgba(26, 74, 74, 0.05));">
+                                    <h5 class="card-title" style="color: #0F3D3E;"><?= $news['title'] ?></h5>
+                                    <p class="card-text flex-grow-1" style="color: #495057;"><?= substr(strip_tags($news['description']), 0, 120) ?>...</p>
+                                    <div class="mt-auto">
+                                        <p class="text-muted small mb-2">Sumber: <?= $news['source']['name'] ?? $news['source'] ?> | <?= date('d M Y', strtotime($news['publishedAt'])) ?></p>
+                                        <a href="<?= $news['url'] ?>" target="_blank" class="btn btn-sm" style="background: linear-gradient(135deg, #D4AF37, #f4c430); color: #0F3D3E; border: none;">Baca Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Berita Kementerian Pendidikan sedang dimuat...</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>

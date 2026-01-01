@@ -73,6 +73,54 @@ class NewsController extends BaseController
             }
         }
 
+        // Fetch berita API from cache (same as Home)
+        $cache = \Config\Services::cache();
+        $nationalNews = $cache->get('national_news_v2') ?: $this->fetchNationalNews();
+        $kemendikbudNews = $cache->get('kemendikbud_news_v2') ?: $this->fetchKemendikbudNews();
+
+        // Dummy data if empty
+        if (empty($nationalNews)) {
+            $nationalNews = [
+                [
+                    'title' => 'Berita Nasional 1',
+                    'content' => 'Ini adalah contoh berita nasional dari API.',
+                    'image' => null,
+                    'url' => '#',
+                    'source' => 'Nasional',
+                    'created_at' => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'title' => 'Berita Nasional 2',
+                    'content' => 'Contoh berita kedua dari sumber nasional.',
+                    'image' => null,
+                    'url' => '#',
+                    'source' => 'Nasional',
+                    'created_at' => date('Y-m-d H:i:s'),
+                ],
+            ];
+        }
+
+        if (empty($kemendikbudNews)) {
+            $kemendikbudNews = [
+                [
+                    'title' => 'Berita Kemendikbud 1',
+                    'content' => 'Ini adalah contoh berita dari Kementerian Pendidikan.',
+                    'image' => null,
+                    'url' => '#',
+                    'source' => 'Kemendikbud',
+                    'created_at' => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'title' => 'Berita Kemendikbud 2',
+                    'content' => 'Contoh berita kedua dari Kemendikbud.',
+                    'image' => null,
+                    'url' => '#',
+                    'source' => 'Kemendikbud',
+                    'created_at' => date('Y-m-d H:i:s'),
+                ],
+            ];
+        }
+
         $data = [
             'title' => 'Berita Sekolah',
             'news' => $news,
@@ -80,6 +128,8 @@ class NewsController extends BaseController
             'search' => $search,
             'selectedCategory' => $selectedCategoryName,
             'categories' => $this->categoryModel->where('type', 'news')->findAll(),
+            'nationalNews' => $nationalNews,
+            'kemendikbudNews' => $kemendikbudNews,
         ];
 
         $this->renderWithTemplate('news/index', $data);
@@ -260,5 +310,113 @@ class NewsController extends BaseController
         $this->newsModel->delete($id);
 
         return redirect()->to('/admin/news')->with('success', 'Berita berhasil dihapus');
+    }
+
+    // Public: API News - Berita dari API nasional dan Kemenag
+    public function apiIndex()
+    {
+        // Fetch berita dari API nasional
+        $nationalNews = $this->fetchNationalNews();
+
+        // Fetch berita dari API Kemendikbud
+        $kemendikbudNews = $this->fetchKemendikbudNews();
+
+        // Gabungkan berita
+        $apiNews = array_merge($nationalNews, $kemendikbudNews);
+
+        $data = [
+            'title' => 'Berita dari API',
+            'news' => $apiNews,
+            'categories' => [], // Tidak ada kategori untuk API
+        ];
+
+        $this->renderWithTemplate('news/api_index', $data);
+    }
+
+    // Helper: Fetch berita Kemendikbud dari NewsAPI
+    private function fetchKemendikbudNews()
+    {
+        $apiKey = getenv('NEWSAPI_KEY') ?: '27fb318e335b42078b472ab90956e5cb'; // Use a valid key or environment variable
+        $query = 'kemendikbud';
+        $url = "https://newsapi.org/v2/everything?q=" . urlencode($query) . "&language=id&sortBy=publishedAt&apiKey={$apiKey}";
+
+        $client = \Config\Services::curlrequest([
+            'timeout' => 10,
+        ]);
+        
+        $news = [];
+        try {
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'User-Agent' => 'MTS-Darul-Ulum-App/1.0',
+                ]
+            ]);
+
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+
+            if ($data && isset($data['articles'])) {
+                foreach ($data['articles'] as $article) {
+                     if (!empty($article['urlToImage'])) { // Hanya tampilkan berita dengan gambar
+                        $news[] = [
+                            'title' => $article['title'],
+                            'content' => $article['description'] ?: '',
+                            'image' => $article['urlToImage'],
+                            'url' => $article['url'],
+                            'source' => $article['source']['name'] ?? 'Unknown Source',
+                            'created_at' => $article['publishedAt'],
+                        ];
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // Log the error or handle it gracefully
+            log_message('error', 'NewsAPI fetch failed for Kemendikbud: ' . $e->getMessage());
+        }
+
+        return $news;
+    }
+
+    // Helper: Fetch berita nasional dari NewsAPI
+    private function fetchNationalNews()
+    {
+        $apiKey = getenv('NEWSAPI_KEY') ?: '27fb318e335b42078b472ab90956e5cb'; // Use a valid key or environment variable
+        $url = "https://newsapi.org/v2/top-headlines?country=id&apiKey={$apiKey}";
+
+        $client = \Config\Services::curlrequest([
+            'timeout' => 10,
+        ]);
+
+        $news = [];
+        try {
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'User-Agent' => 'MTS-Darul-Ulum-App/1.0',
+                ]
+            ]);
+
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+
+            if ($data && isset($data['articles'])) {
+                foreach ($data['articles'] as $article) {
+                    if (!empty($article['urlToImage'])) { // Hanya tampilkan berita dengan gambar
+                        $news[] = [
+                            'title' => $article['title'],
+                            'content' => $article['description'] ?: '',
+                            'image' => $article['urlToImage'],
+                            'url' => $article['url'],
+                            'source' => $article['source']['name'] ?? 'Nasional',
+                            'created_at' => $article['publishedAt'],
+                        ];
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // Log the error or handle it gracefully
+            log_message('error', 'NewsAPI fetch failed for National News: ' . $e->getMessage());
+        }
+
+        return $news;
     }
 }
