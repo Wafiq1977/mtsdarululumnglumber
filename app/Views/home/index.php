@@ -730,6 +730,45 @@
             });
         }
 
+        // Manual dropdown toggle for navbar more menu
+        const navbarDropdown = document.getElementById('navbarDropdown');
+        const navbarDropdownMenu = document.querySelector('#navbarDropdown + .dropdown-menu') || document.querySelector('[aria-labelledby="navbarDropdown"]');
+
+        if (navbarDropdown && navbarDropdownMenu) {
+            navbarDropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                    if (menu !== navbarDropdownMenu) {
+                        menu.classList.remove('show');
+                    }
+                });
+
+                // Toggle current dropdown
+                navbarDropdownMenu.classList.toggle('show');
+                this.setAttribute('aria-expanded', navbarDropdownMenu.classList.contains('show'));
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navbarDropdown.contains(e.target) && !navbarDropdownMenu.contains(e.target)) {
+                    navbarDropdownMenu.classList.remove('show');
+                    navbarDropdown.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Handle dropdown item clicks - allow navigation
+            navbarDropdownMenu.addEventListener('click', function(e) {
+                // Only prevent default if clicking on non-link elements
+                if (!e.target.closest('.dropdown-item')) {
+                    e.stopPropagation();
+                }
+                // Let dropdown items handle their own navigation
+            });
+        }
+
 
 
         // Enhanced card hover effects
@@ -1113,6 +1152,7 @@ body.home-page {
     list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 .nav-item {
@@ -1243,7 +1283,7 @@ body.home-page {
     margin-top: 15px;
     padding: 0.75rem 0;
     min-width: 220px;
-    z-index: 1300 !important;
+    z-index: 2000 !important;
     width: max-content;
     max-width: 300px;
     opacity: 0;
@@ -2939,20 +2979,34 @@ body.home-page {
     }
 
     .navbar-menu {
-        gap: 1.5rem;
+        display: flex;
+        flex-direction: row;
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        gap: 0.2rem;
         padding: 0.5rem;
+        width: 100%;
+        overflow-x: auto;
     }
 
     .nav-item {
-        min-height: 45px;
-        padding: 0.4rem 0.6rem;
+        flex: 0 0 auto;
+        width: 50px;
+        min-height: 40px;
+        padding: 0.3rem 0.1rem;
+        text-align: center;
+        font-size: 0.6rem;
+    }
+
+    .nav-item span {
+        font-size: 0.5rem;
+        line-height: 1;
     }
 
     .navbar-actions {
         flex-direction: column;
         width: 100%;
+        gap: 0.5rem;
     }
 
     .btn-nav-primary,
@@ -2960,6 +3014,8 @@ body.home-page {
         justify-content: center;
         width: 100%;
         margin: 0.25rem 0;
+        font-size: 0.7rem;
+        padding: 0.4rem 0.6rem;
     }
 
     .premium-main-navbar {
@@ -3030,8 +3086,25 @@ body.home-page {
         margin-bottom: 20px;
     }
 
+    /* Navbar tetap horizontal di mobile */
     .navbar-menu {
-        display: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 0.3rem;
+        overflow-x: auto;
+    }
+
+    .nav-item {
+        flex: 0 0 auto;
+        width: 50px;
+        text-align: center;
+        font-size: 0.6rem;
+    }
+
+    .nav-item span {
+        font-size: 0.45rem;
     }
 
     .navbar-brand-section {
@@ -3081,6 +3154,22 @@ body.home-page {
     .premium-main-navbar .dropdown-item i {
         width: 16px;
         margin-right: 0.5rem;
+    }
+
+    /* Perbaiki ukuran tool-item agar konsisten */
+    .tool-item {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+        min-width: 120px;
+    }
+
+    .tool-item i {
+        font-size: 1.2rem;
+    }
+
+    .tool-item span {
+        font-size: 0.85rem;
+        font-weight: 600;
     }
 }
 
