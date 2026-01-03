@@ -87,11 +87,9 @@
                 <i class="fas fa-user-graduate"></i>
                 <span>Guru: 20+</span>
             </div>
-            <a href="/profile/identity" class="tool-item-link">
-                <div class="tool-item">
-                    <i class="fas fa-award"></i>
-                    <span>Akreditasi: A</span>
-                </div>
+            <a href="/profile/identity" class="tool-item tool-item-link d-flex justify-content-center">
+                <i class="fas fa-award"></i>
+                <span>Akreditasi: A</span>
             </a>
             <div class="tool-item">
                 <i class="fas fa-calendar-alt"></i>
