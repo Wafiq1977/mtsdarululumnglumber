@@ -35,7 +35,7 @@
                         <h2 class="profile-card-title">Misi Kami</h2>
                     </div>
                     <div class="profile-card-body">
-                        <ul class="mission-list-new">
+                        <ol type="a" class="vision-list">
                             <?php
                             $missions = [
                                 "Menumbuh kembangkan lingkungan dan perilaku religius dengan mengamalkan dan menghayati nilai-nilai Ajaran Agama Islam yang berlandaskan faham Ahlusunnah waljamaah.",
@@ -50,39 +50,17 @@
                                 "Membiasakan disiplin, do'a bersama sebelum dan sesudah belajar, Sholat dluha, Sholat dhuhur, tahlil. istighotsah dan sholawat Nabi."
                             ];
 
-                            $missionIcons = [
-                                "fas fa-mosque",
-                                "fas fa-graduation-cap",
-                                "fas fa-users",
-                                "fas fa-trophy",
-                                "fas fa-heart",
-                                "fas fa-language",
-                                "fas fa-home",
-                                "fas fa-handshake",
-                                "fas fa-brain",
-                                "fas fa-pray"
-                            ];
-
-                            foreach ($missions as $index => $mission) {
+                            foreach ($missions as $mission) {
                                 $mission = trim($mission);
                                 if (empty($mission)) continue;
-                                $title = "Misi " . ($index + 1);
-                                $detail = $mission;
-                                $icon = $missionIcons[$index] ?? "fas fa-check";
                                 ?>
-                                <li>
-                                    <div class="mission-item-new">
-                                        <div class="mission-icon-new"><i class="<?= $icon ?>"></i></div>
-                                        <div class="mission-text-new">
-                                            <h5><?= esc($title) ?></h5>
-                                            <p><?= esc($detail) ?></p>
-                                        </div>
-                                    </div>
+                                <li class="vision-item">
+                                    <?= esc($mission) ?>
                                 </li>
                                 <?php
                             }
                             ?>
-                        </ul>
+                        </ol>
                     </div>
                 </div>
 
@@ -93,7 +71,7 @@
                         <h2 class="profile-card-title">Tujuan Kami</h2>
                     </div>
                     <div class="profile-card-body">
-                        <ul class="mission-list-new">
+                        <ol type="a" class="vision-list">
                             <?php
                             $goals = [
                                 "Terwujudnya budaya madrasah yang religius dan berakhlakul karimah melalui kegiatan keagamaan yang berlandaskan faham ahlusunnah wal jama'ah.",
@@ -108,39 +86,17 @@
                                 "Menerapkan nilai-nilai kebersamaan dalam kehidupan bermasyarakat, berbangsa dan bernegara demi terwujudnya persatuan dan kesatuan negara Republik Indonesia"
                             ];
 
-                            $goalIcons = [
-                                "fas fa-pray",
-                                "fas fa-gavel",
-                                "fas fa-users-cog",
-                                "fas fa-book-open",
-                                "fas fa-chart-line",
-                                "fas fa-globe",
-                                "fas fa-lightbulb",
-                                "fas fa-palette",
-                                "fas fa-user-graduate",
-                                "fas fa-flag"
-                            ];
-
-                            foreach ($goals as $index => $goal) {
+                            foreach ($goals as $goal) {
                                 $goal = trim($goal);
                                 if (empty($goal)) continue;
-                                $title = "Tujuan " . ($index + 1);
-                                $detail = $goal;
-                                $icon = $goalIcons[$index] ?? "fas fa-target";
                                 ?>
-                                <li>
-                                    <div class="mission-item-new">
-                                        <div class="mission-icon-new"><i class="<?= $icon ?>"></i></div>
-                                        <div class="mission-text-new">
-                                            <h5><?= esc($title) ?></h5>
-                                            <p><?= esc($detail) ?></p>
-                                        </div>
-                                    </div>
+                                <li class="vision-item">
+                                    <?= esc($goal) ?>
                                 </li>
                                 <?php
                             }
                             ?>
-                        </ul>
+                        </ol>
                     </div>
                 </div>
             </div>

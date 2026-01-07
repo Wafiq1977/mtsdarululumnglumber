@@ -1204,6 +1204,41 @@
     margin: 0;
 }
 
+.vision-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: vision-counter;
+}
+
+.vision-item {
+    position: relative;
+    padding: 1rem 0 1rem 2rem;
+    border-bottom: 1px solid #e9ecef;
+    line-height: 1.6;
+    color: #495057;
+    transition: background-color 0.3s;
+}
+
+.vision-item:last-child {
+    border-bottom: none;
+}
+
+.vision-item:hover {
+    background-color: #f8f9fa;
+}
+
+.vision-item::before {
+    content: counter(vision-counter, lower-alpha) ")";
+    counter-increment: vision-counter;
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    font-weight: 600;
+    color: #D4AF37;
+    font-size: 1rem;
+}
+
 .profile-sidebar {
     position: sticky;
     top: 100px;
