@@ -313,11 +313,14 @@
         <h2 class="text-center mb-5 text-success">Berita Kementerian Agama RI</h2>
         <div class="row">
             <?php if (!empty($kemenagNews)): ?>
-                <?php foreach ($kemenagNews as $news): ?>
+                <?php foreach (array_slice($kemenagNews, 0, 3) as $index => $news):
+                    $localImages = ['agama 1.jpg', 'agama 2.jpg', 'agama 3.jpg'];
+                    $imageSrc = base_url('uploads/' . ($localImages[$index] ?? 'agama 1.jpg'));
+                ?>
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm kemenag-news-card">
-                            <img src="<?= $news['urlToImage'] ?? 'https://via.placeholder.com/400x250' ?>"
-                                  class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                            <img src="<?= $imageSrc ?>"
+                                   class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title text-success"><?= $news['title'] ?></h5>
                                 <p class="card-text text-muted"><?= substr($news['description'], 0, 100) ?>...</p>
@@ -349,11 +352,14 @@
         <h2 class="text-center mb-5 text-success">Berita Kementerian Pendidikan RI</h2>
         <div class="row">
             <?php if (!empty($kemendikbudNews)): ?>
-                <?php foreach ($kemendikbudNews as $news): ?>
+                <?php foreach (array_slice($kemendikbudNews, 0, 3) as $index => $news):
+                    $localImages = ['pendidikan 1.jpg', 'pendidikan 2.jpeg', 'pendidikan 3.png'];
+                    $imageSrc = base_url('uploads/' . ($localImages[$index] ?? 'pendidikan 1.jpg'));
+                ?>
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm kemendikbud-news-card">
-                            <img src="<?= $news['urlToImage'] ?? 'https://via.placeholder.com/400x250' ?>"
-                                  class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
+                            <img src="<?= $imageSrc ?>"
+                                   class="card-img-top" alt="<?= $news['title'] ?>" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title text-success"><?= $news['title'] ?></h5>
                                 <p class="card-text text-muted"><?= substr($news['description'], 0, 100) ?>...</p>
