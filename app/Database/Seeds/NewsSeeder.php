@@ -42,6 +42,50 @@ class NewsSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            [
+                'title' => 'Prestasi Siswa dalam Olimpiade Sains',
+                'slug' => 'prestasi-siswa-olimpiade-sains',
+                'content' => 'Siswa kami meraih medali emas dalam olimpiade sains nasional. Prestasi ini menunjukkan dedikasi siswa dalam bidang akademik.',
+                'image' => 'news4.jpg',
+                'category_id' => 4, // Prestasi Siswa
+                'status' => 'published',
+                'user_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Penghargaan untuk Guru Terbaik',
+                'slug' => 'penghargaan-guru-terbaik',
+                'content' => 'Guru kami menerima penghargaan sebagai guru terbaik tingkat provinsi atas kontribusinya dalam dunia pendidikan.',
+                'image' => 'news5.jpg',
+                'category_id' => 5, // Prestasi Guru
+                'status' => 'published',
+                'user_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Kegiatan Bakti Sosial Siswa',
+                'slug' => 'kegiatan-bakti-sosial-siswa',
+                'content' => 'Siswa mengadakan kegiatan bakti sosial di desa terdekat, membantu membersihkan lingkungan dan memberikan bantuan kepada warga.',
+                'image' => 'news6.jpg',
+                'category_id' => 6, // Kegiatan Siswa
+                'status' => 'published',
+                'user_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Pelatihan untuk Guru',
+                'slug' => 'pelatihan-guru',
+                'content' => 'Guru-guru mengikuti pelatihan pengembangan profesional untuk meningkatkan kualitas pengajaran.',
+                'image' => 'news7.jpg',
+                'category_id' => 7, // Kegiatan Guru
+                'status' => 'published',
+                'user_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
         ];
 
         $this->db->table('news')->insertBatch($data);

@@ -130,6 +130,10 @@ class NewsController extends BaseController
 
         $data = [
             'title' => 'Berita',
+            'news' => $news,
+            'categories' => $this->categoryModel->where('type', 'news')->findAll(),
+            'selectedCategory' => $selectedCategoryName,
+            'search' => $search,
             'kemenagNews' => $kemenagNews,
             'kemendikbudNews' => $kemendikbudNews,
         ];
