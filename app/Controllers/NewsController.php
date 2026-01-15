@@ -60,8 +60,7 @@ class NewsController extends BaseController
             }
         }
 
-        $total = $query->countAllResults(false);
-        $news = $query->orderBy('created_at', 'DESC')->paginate($perPage, 'news', $page);
+        $news = $query->orderBy('created_at', 'DESC')->findAll();
 
         $selectedCategoryName = '';
         if ($category) {
@@ -75,27 +74,27 @@ class NewsController extends BaseController
 
         // Fetch berita API from cache (same as Home)
         $cache = \Config\Services::cache();
-        $nationalNews = $cache->get('national_news_v2') ?: $this->fetchNationalNews();
-        $kemendikbudNews = $cache->get('kemendikbud_news_v2') ?: $this->fetchKemendikbudNews();
+        $kemenagNews = $cache->get('kemenag_news_v2') ?: $this->fetchKemenagNews();
+        $kemendikbudNews = $cache->get('kemendikbud_news_rss_v1') ?: $this->fetchKemendikbudNews();
 
         // Dummy data if empty
-        if (empty($nationalNews)) {
-            $nationalNews = [
+        if (empty($kemenagNews)) {
+            $kemenagNews = [
                 [
-                    'title' => 'Berita Nasional 1',
-                    'content' => 'Ini adalah contoh berita nasional dari API.',
-                    'image' => null,
-                    'url' => '#',
-                    'source' => 'Nasional',
-                    'created_at' => date('Y-m-d H:i:s'),
+                    'title' => 'Kemenag Luncurkan Program Moderasi Beragama',
+                    'description' => 'Program moderasi beragama dicanangkan untuk memperkuat toleransi dan kerukunan antar umat beragama.',
+                    'urlToImage' => 'https://picsum.photos/400/250?random=1001',
+                    'url' => 'https://kemenag.go.id',
+                    'source' => ['name' => 'Kemenag.go.id'],
+                    'publishedAt' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'title' => 'Berita Nasional 2',
-                    'content' => 'Contoh berita kedua dari sumber nasional.',
-                    'image' => null,
-                    'url' => '#',
-                    'source' => 'Nasional',
-                    'created_at' => date('Y-m-d H:i:s'),
+                    'title' => 'Haji 2024: Pemerintah Pastikan Kualitas dan Keselamatan Jemaah',
+                    'description' => 'Persiapan ibadah haji tahun 2024 difokuskan pada peningkatan pelayanan dan keselamatan jemaah.',
+                    'urlToImage' => 'https://picsum.photos/400/250?random=1002',
+                    'url' => 'https://kemenag.go.id',
+                    'source' => ['name' => 'Kemenag.go.id'],
+                    'publishedAt' => date('Y-m-d H:i:s'),
                 ],
             ];
         }
@@ -103,32 +102,35 @@ class NewsController extends BaseController
         if (empty($kemendikbudNews)) {
             $kemendikbudNews = [
                 [
-                    'title' => 'Berita Kemendikbud 1',
-                    'content' => 'Ini adalah contoh berita dari Kementerian Pendidikan.',
-                    'image' => null,
-                    'url' => '#',
-                    'source' => 'Kemendikbud',
-                    'created_at' => date('Y-m-d H:i:s'),
+                    'title' => 'Kemendikbudristek Luncurkan Program Merdeka Belajar Episode 20',
+                    'description' => 'Program Merdeka Belajar terus dikembangkan dengan fokus pada peningkatan kualitas pendidikan di Indonesia.',
+                    'urlToImage' => 'https://picsum.photos/400/250?random=1',
+                    'url' => 'https://www.kemdikbud.go.id',
+                    'source' => ['name' => 'Kemendikbud.go.id'],
+                    'publishedAt' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'title' => 'Berita Kemendikbud 2',
-                    'content' => 'Contoh berita kedua dari Kemendikbud.',
-                    'image' => null,
-                    'url' => '#',
-                    'source' => 'Kemendikbud',
-                    'created_at' => date('Y-m-d H:i:s'),
+                    'title' => 'Pemerintah Targetkan 100% Akses Internet di Sekolah',
+                    'description' => 'Inisiatif untuk memastikan semua sekolah di Indonesia memiliki akses internet yang memadai.',
+                    'urlToImage' => 'https://picsum.photos/400/250?random=2',
+                    'url' => 'https://www.kemdikbud.go.id',
+                    'source' => ['name' => 'Kemendikbud.go.id'],
+                    'publishedAt' => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'title' => 'Kurikulum Merdeka Diterapkan di 200.000 Sekolah',
+                    'description' => 'Implementasi kurikulum baru telah mencapai target yang ditetapkan pemerintah.',
+                    'urlToImage' => 'https://picsum.photos/400/250?random=3',
+                    'url' => 'https://www.kemdikbud.go.id',
+                    'source' => ['name' => 'Kemendikbud.go.id'],
+                    'publishedAt' => date('Y-m-d H:i:s'),
                 ],
             ];
         }
 
         $data = [
-            'title' => 'Berita Sekolah',
-            'news' => $news,
-            'pager' => $this->newsModel->pager,
-            'search' => $search,
-            'selectedCategory' => $selectedCategoryName,
-            'categories' => $this->categoryModel->where('type', 'news')->findAll(),
-            'nationalNews' => $nationalNews,
+            'title' => 'Berita',
+            'kemenagNews' => $kemenagNews,
             'kemendikbudNews' => $kemendikbudNews,
         ];
 
@@ -333,90 +335,110 @@ class NewsController extends BaseController
         $this->renderWithTemplate('news/api_index', $data);
     }
 
-    // Helper: Fetch berita Kemendikbud dari NewsAPI
+    // Helper: Fetch berita Kemendikbud dari RSS
     private function fetchKemendikbudNews()
     {
-        $apiKey = getenv('NEWSAPI_KEY') ?: '27fb318e335b42078b472ab90956e5cb'; // Use a valid key or environment variable
-        $query = 'kemendikbud';
-        $url = "https://newsapi.org/v2/everything?q=" . urlencode($query) . "&language=id&sortBy=publishedAt&apiKey={$apiKey}";
-
-        $client = \Config\Services::curlrequest([
-            'timeout' => 10,
-        ]);
-        
-        $news = [];
         try {
-            $response = $client->request('GET', $url, [
-                'headers' => [
-                    'User-Agent' => 'MTS-Darul-Ulum-App/1.0',
-                ]
-            ]);
+            // Try to fetch from Kemendikbud RSS feed
+            $rssUrl = 'https://www.kemdikbud.go.id/feed/';
 
-            $body = $response->getBody();
-            $data = json_decode($body, true);
+            // Use curl to fetch RSS
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $rssUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');
 
-            if ($data && isset($data['articles'])) {
-                foreach ($data['articles'] as $article) {
-                     if (!empty($article['urlToImage'])) { // Hanya tampilkan berita dengan gambar
+            $rssContent = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode == 200 && $rssContent) {
+                // Parse RSS XML
+                $xml = simplexml_load_string($rssContent);
+                if ($xml && isset($xml->channel->item)) {
+                    $news = [];
+                    foreach ($xml->channel->item as $item) {
+                        // Extract image from content if available
+                        $content = (string)$item->description;
+                        $imageUrl = $this->extractImageFromContent($content);
+
                         $news[] = [
-                            'title' => $article['title'],
-                            'content' => $article['description'] ?: '',
-                            'image' => $article['urlToImage'],
-                            'url' => $article['url'],
-                            'source' => $article['source']['name'] ?? 'Unknown Source',
-                            'created_at' => $article['publishedAt'],
+                            'title' => (string)$item->title,
+                            'description' => strip_tags((string)$item->description),
+                            'urlToImage' => $imageUrl ?: 'https://picsum.photos/400/250?random=' . rand(1, 1000),
+                            'url' => (string)$item->link,
+                            'source' => ['name' => 'Kemendikbud.go.id'],
+                            'publishedAt' => date('Y-m-d H:i:s', strtotime((string)$item->pubDate)),
                         ];
                     }
+                    return $news;
                 }
             }
         } catch (\Exception $e) {
             // Log the error or handle it gracefully
-            log_message('error', 'NewsAPI fetch failed for Kemendikbud: ' . $e->getMessage());
+            log_message('error', 'Kemendikbud RSS fetch failed: ' . $e->getMessage());
         }
 
-        return $news;
+        return [];
     }
 
-    // Helper: Fetch berita nasional dari NewsAPI
-    private function fetchNationalNews()
+    // Helper: Fetch berita Kemenag dari RSS
+    private function fetchKemenagNews()
     {
-        $apiKey = getenv('NEWSAPI_KEY') ?: '27fb318e335b42078b472ab90956e5cb'; // Use a valid key or environment variable
-        $url = "https://newsapi.org/v2/top-headlines?country=id&apiKey={$apiKey}";
-
-        $client = \Config\Services::curlrequest([
-            'timeout' => 10,
-        ]);
-
-        $news = [];
         try {
-            $response = $client->request('GET', $url, [
-                'headers' => [
-                    'User-Agent' => 'MTS-Darul-Ulum-App/1.0',
-                ]
-            ]);
+            // Try to fetch from KEMENAG RSS feed
+            $rssUrl = 'https://kemenag.go.id/feed/';
 
-            $body = $response->getBody();
-            $data = json_decode($body, true);
+            // Use curl to fetch RSS
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $rssUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');
 
-            if ($data && isset($data['articles'])) {
-                foreach ($data['articles'] as $article) {
-                    if (!empty($article['urlToImage'])) { // Hanya tampilkan berita dengan gambar
+            $rssContent = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode == 200 && $rssContent) {
+                // Parse RSS XML
+                $xml = simplexml_load_string($rssContent);
+                if ($xml && isset($xml->channel->item)) {
+                    $news = [];
+                    foreach ($xml->channel->item as $item) {
+                        // Extract image from content if available
+                        $content = (string)$item->description;
+                        $imageUrl = $this->extractImageFromContent($content);
+
                         $news[] = [
-                            'title' => $article['title'],
-                            'content' => $article['description'] ?: '',
-                            'image' => $article['urlToImage'],
-                            'url' => $article['url'],
-                            'source' => $article['source']['name'] ?? 'Nasional',
-                            'created_at' => $article['publishedAt'],
+                            'title' => (string)$item->title,
+                            'description' => strip_tags((string)$item->description),
+                            'urlToImage' => $imageUrl ?: 'https://picsum.photos/400/250?random=' . rand(1001, 2000),
+                            'url' => (string)$item->link,
+                            'source' => ['name' => 'Kemenag.go.id'],
+                            'publishedAt' => date('Y-m-d H:i:s', strtotime((string)$item->pubDate)),
                         ];
                     }
+                    return $news;
                 }
             }
         } catch (\Exception $e) {
             // Log the error or handle it gracefully
-            log_message('error', 'NewsAPI fetch failed for National News: ' . $e->getMessage());
+            log_message('error', 'Kemenag RSS fetch failed: ' . $e->getMessage());
         }
 
-        return $news;
+        return [];
+    }
+
+    private function extractImageFromContent($content)
+    {
+        // Try to extract image URL from content
+        if (preg_match('/<img[^>]+src=["\']([^"\']+)["\'][^>]*>/i', $content, $matches)) {
+            return $matches[1];
+        }
+        return null;
     }
 }
